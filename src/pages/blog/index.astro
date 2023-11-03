@@ -30,12 +30,8 @@ const posts = (await getCollection('blog')).sort(
 										<FormattedDate date={post.data.date} />
 									</p>
 								</a>
-								{post.data.categories.map((c) => {
-									<><span>{c}</span>&nbsp;</>
-								})}
-								{post.data.tags.map((t) => {
-									<><span>{t}</span>&nbsp;</>
-								})}
+								{post.data.categories.map(c => (<span>{c}&nbsp;</span>))}
+								{post.data.tags.map(t => (<span>{t}&nbsp;</span>))}
 							</li>
 						))
 					}

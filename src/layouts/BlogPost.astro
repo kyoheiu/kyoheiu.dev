@@ -25,6 +25,8 @@ const { title, date, categories, tags } = Astro.props;
 							<FormattedDate date={date} />
 						</div>
 						<h1>{title}</h1>
+						{categories.map(c => <span>{c}&nbsp;</span>)}
+						{tags.map(t => <span>{t}&nbsp;</span>)}
 						<hr />
 					</div>
 					<slot />
