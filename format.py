@@ -3,8 +3,8 @@ from os import walk
 i = 0
 for (dirpath, dirnames, filenames) in walk("./src/content/blog"):
     for file in filenames:
-      with open('./src/content/blog/{}'.format(file), "r+") as f:
-        newContent = "---\n"
+      newContent = "---\n"
+      with open('./src/content/blog/{}'.format(file), "r") as f:
         _ = f.readline()
         line = f.readline()
         while line != '':
@@ -13,7 +13,11 @@ for (dirpath, dirnames, filenames) in walk("./src/content/blog"):
             line = f.readline()
             continue
 
-          if "taxonomies" in line:
+          if "[taxonomies]" in line:
+            line = f.readline()
+            continue
+
+          if "[extra]" in line:
             line = f.readline()
             continue
 
@@ -21,8 +25,10 @@ for (dirpath, dirnames, filenames) in walk("./src/content/blog"):
           newContent += newLine
           line = f.readline()
           continue
-
+      
+      with open('./src/content/blog/{}'.format(file), "w") as f:
         f.write(newContent)
+
 
       i = i + 1
 print('total {}'.format(i))
