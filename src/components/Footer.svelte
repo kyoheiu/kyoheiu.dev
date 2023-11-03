@@ -2,9 +2,9 @@
 </script>
 
 <footer>
-	<div class="social-links">
+	<div>
 		<a href="https://github.com/withastro/astro" target="_blank">
-			<span class="sr-only">Go to Astro's GitHub repo</span>
+			<span>Go to Astro's GitHub repo</span>
 			<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
 				><path
 					fill="currentColor"

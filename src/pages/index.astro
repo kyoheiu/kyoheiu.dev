@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Top from "../components/Top.svelte";
+import Header from "../components/Header.astro";
 ---
 
 <!doctype html>
@@ -9,6 +10,7 @@ import Top from "../components/Top.svelte";
 	<head>
 		<BaseHead title="kyoheiu.dev" />
 	</head>
+	<Header />
 	<body>
         <Top />
     </body>
