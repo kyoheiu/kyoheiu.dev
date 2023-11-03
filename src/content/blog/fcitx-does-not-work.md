@@ -1,12 +1,10 @@
-+++
-title = "fcitxが壊れたので設定を見直す"
-date = 2021-12-29
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["fcitx", "i3", "linux"]
-+++
-### 壊れた原因
+---
+title: "fcitxが壊れたので設定を見直す"
+date: 2021-12-29
+math: false
+categories: ["code"]
+tags: ["fcitx", "i3", "linux"]
+---### 壊れた原因
 普段はMac bookでzoomを使っていたのだけれど、ちょっとした用事でメインのデスクトップにもzoomを入れることになり、
 
 ```

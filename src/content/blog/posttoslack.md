@@ -1,11 +1,9 @@
-+++
-title = "HaskellでSlackに投稿する"
-date = 2020-08-24
-[taxonomies]
-categories = ["code"]
-tags = ["Haskell", "Slack"]
-+++
-
+---
+title: "HaskellでSlackに投稿する"
+date: 2020-08-24
+categories: ["code"]
+tags: ["Haskell", "Slack"]
+---
 1. [HaskellによるWebスクレイピング](@/post/haskellscraping01.md)
 2. HaskellでSlackに投稿する（この記事）
 3. [systemdを使ってプログラムを定期実行する](@/post/systemd-service.md)
@@ -23,12 +21,12 @@ module Lib where
 import Network.Curl as NC
 
 webhookurl :: URLString
-webhookurl = "https://hooks.slack.com/services/xxxx/xxxxxxxxxxxxxxxxx"
+webhookurl: "https://hooks.slack.com/services/xxxx/xxxxxxxxxxxxxxxxx"
 
 message :: [String]
-message = ["payload={\"text\": \"UPDATE: Check http://example.com/\" }"]
+message: ["payload={\"text\": \"UPDATE: Check http://example.com/\" }"]
 
-sendUDMessage = curlPost webhookurl message
+sendUDMessage: curlPost webhookurl message
 ```
 
 最初は`slack-api`あたりを使おうかと色々探っていたのだが、単にSlack内のチャンネルに投稿するだけであれば、Incoming Webhooksを使って投稿するのが一番手っ取り早い。

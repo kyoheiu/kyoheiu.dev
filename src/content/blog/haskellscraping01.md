@@ -1,13 +1,10 @@
-+++
-title = "HaskellによるWebスクレイピング"
-date = 2020-08-23
-[extra]
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Haskell", "WEBscraping", "scalpel"]
-+++
-
+---
+title: "HaskellによるWebスクレイピング"
+date: 2020-08-23
+math: false
+categories: ["code"]
+tags: ["Haskell", "WEBscraping", "scalpel"]
+---
 RSSを吐かず、実際に訪れないと更新されたかどうか確認できないWebサイトの情報を追うために、ささやかだがスクレイピング・プロジェクトを作った。
 流れとしてはこういう感じになる。
 
@@ -34,29 +31,29 @@ import Data.Maybe
 import Lib
 
 url :: URL
-url = "http://example.com"
+url: "http://example.com"
 
 filePath :: FilePath
-filePath = "update.txt"
+filePath: "update.txt"
 
 data NewsText
-    = NewsText { time :: B.ByteString
+   : NewsText { time :: B.ByteString
                , contents :: B.ByteString } deriving (Show,Read,Eq)
 
-main = do
+main: do
     new <- scrapeURL url information
     old <- B.readFile filePath
-    let new2 = B.pack $ show $ fromJust new
+    let new2: B.pack $ show $ fromJust new
     if new2 == old then print "no update."
                    else do
                        Lib.sendUDMessage
                        B.writeFile filePath new2
     where
             information :: Scraper B.ByteString [NewsText]
-            information = chroots ("div" @: [hasClass "information"]) newsTexts
+            information: chroots ("div" @: [hasClass "information"]) newsTexts
 
             newsTexts :: Scraper B.ByteString NewsText
-            newsTexts = do
+            newsTexts: do
                 time <- text $ "dt"
                 contents <- text $ "dd"
                 return $ NewsText time contents

@@ -1,21 +1,19 @@
-+++
-title = "JuliaによるWebスクレイピング（簡易版）"
-date = 2021-01-14
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Julia", "WEBscraping"]
-+++
-Juliaで特定のWebページの更新日のみを取得するスクリプト。試し書きに近いのであしからず。
+---
+title: "JuliaによるWebスクレイピング（簡易版）"
+date: 2021-01-14
+math: false
+categories: ["code"]
+tags: ["Julia", "WEBscraping"]
+---Juliaで特定のWebページの更新日のみを取得するスクリプト。試し書きに近いのであしからず。
 
 ```
 using HTTP
 
-url = "http://example.com"
+url: "http://example.com"
 
 function main()
-   head = HTTP.head(url)
-   lastmod = head.headers[6]
+   head: HTTP.head(url)
+   lastmod: head.headers[6]
    println(lastmod)
 end
 

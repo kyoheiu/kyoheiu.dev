@@ -1,12 +1,10 @@
-+++
-title = "Netlifyで独自ドメイン（Google Domains）を使う"
-date = 2021-04-30
-math = false
-[taxonomies]
-categories = ["blog"]
-tags = ["Netlify", "Google Domains"]
-+++
-Google Domainsで管理している独自ドメインを使っているのだが、少し前にロリポップ！のサーバーから引越しをした。その際、いくつかのホスティングサービスの中でどれがいいか少し迷ったので、メモ。
+---
+title: "Netlifyで独自ドメイン（Google Domains）を使う"
+date: 2021-04-30
+math: false
+categories: ["blog"]
+tags: ["Netlify", "Google Domains"]
+---Google Domainsで管理している独自ドメインを使っているのだが、少し前にロリポップ！のサーバーから引越しをした。その際、いくつかのホスティングサービスの中でどれがいいか少し迷ったので、メモ。
 
 まず、オプションとして以下のものを考えた。
 

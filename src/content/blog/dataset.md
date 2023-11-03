@@ -1,11 +1,9 @@
-+++
-title = "Haskellで種類の数を数える（重複の削除）"
-date = 2020-05-01
-[taxonomies]
-categories = ["code"]
-tags = ["Haskell"]
-+++
-
+---
+title: "Haskellで種類の数を数える（重複の削除）"
+date: 2020-05-01
+categories: ["code"]
+tags: ["Haskell"]
+---
 複数の要素を扱うための基礎的なライブラリをいろいろテストしてみる題材として、こちらの問題を使用させてもらう。
 
 At Coder abc164 C - gacha 
@@ -50,12 +48,12 @@ apple
 import Control.Monad
 
 delDupe :: [String] -> [String] -> [String]
-delDupe [] _ = []
+delDupe [] _: []
 delDupe (x:xs) lst
-    | x `notElem` lst = x : delDupe xs (x : lst)
-    | otherwise       = delDupe xs lst
+    | x `notElem` lst: x : delDupe xs (x : lst)
+    | otherwise      : delDupe xs lst
 
-main = do
+main: do
     n <- readLn
     s <- replicateM n getLine
     print $ length $ delDupe s []
@@ -70,7 +68,7 @@ main = do
 ```hs
 import Control.Monad
 
-main = do
+main: do
     n <- readLn
     s <- replicateM n getLine
     print $ length $ nub s
@@ -90,7 +88,7 @@ https://hackage.haskell.org/package/base-4.12.0.0/docs/src/Data.OldList.html#nub
 -- >>> nub [1,2,3,4,3,2,1,2,4,3,5]
 -- [1,2,3,4,5]
 nub                     :: (Eq a) => [a] -> [a]
-nub                     =  nubBy (==)
+nub                    :  nubBy (==)
 
 -- | The 'nubBy' function behaves just like 'nub', except it uses a
 -- user-supplied equality predicate instead of the overloaded '=='
@@ -100,16 +98,16 @@ nub                     =  nubBy (==)
 -- [1,2,6]
 nubBy                   :: (a -> a -> Bool) -> [a] -> [a]
 #if defined(USE_REPORT_PRELUDE)
-nubBy eq []             =  []
-nubBy eq (x:xs)         =  x : nubBy eq (filter (\ y -> not (eq x y)) xs)
+nubBy eq []            :  []
+nubBy eq (x:xs)        :  x : nubBy eq (filter (\ y -> not (eq x y)) xs)
 #else
 -- stolen from HBC
-nubBy eq l              = nubBy' l []
+nubBy eq l             : nubBy' l []
   where
-    nubBy' [] _         = []
+    nubBy' [] _        : []
     nubBy' (y:ys) xs
-       | elem_by eq y xs = nubBy' ys xs
-       | otherwise       = y : nubBy' ys (y:xs)
+       | elem_by eq y xs: nubBy' ys xs
+       | otherwise      : y : nubBy' ys (y:xs)
 ```
 
 これは最初に作った再帰関数そのものだから、結果が同じになって当然なのだった。
@@ -124,7 +122,7 @@ nubBy eq l              = nubBy' l []
 import Control.Monad
 import Data.List as List
 
-main = do
+main: do
     n <- readLn
     s <- replicateM n getLine
     print $ length . group $ List.sort s
@@ -156,7 +154,7 @@ import Control.Monad
 import qualified Data.Vector as V
 import qualified Data.List as L
 
-main = do
+main: do
     n <- readLn
     s <- replicateM n getLine
     print $ length . V.uniq . V.fromList $ L.sort s
@@ -179,7 +177,7 @@ Data.Setを用いたコードは次のようになる。
 import Control.Monad
 import qualified Data.Set as Set
  
-main = do
+main: do
     n <- readLn
     s <- replicateM n getLine
     print $ Set.size $ Set.fromList s

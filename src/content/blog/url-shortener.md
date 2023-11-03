@@ -1,12 +1,10 @@
-+++
-title = "URL短縮サービスを勢いだけで実装する"
-date = 2022-09-03
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Rust", "Backend", "zenn"]
-+++
-
+---
+title: "URL短縮サービスを勢いだけで実装する"
+date: 2022-09-03
+math: false
+categories: ["code"]
+tags: ["Rust", "Backend", "zenn"]
+---
 https://www.shuttle.rs/blog/2022/03/13/url-shortener
 こちらのノリノリの記事にインスパイアされたので、axum を使った URL 短縮サービスを実装してみたいと思います（※バックエンドだけ）。
 
@@ -31,10 +29,10 @@ sled は Rust で書かれたインメモリの key/value 型のデータベー�
 
 ```
 [dependencies]
-axum = {version = "0.5.15", features = ["macros"]}
-env_logger = "0.9.0"
-log = "0.4.17"
-tokio = {version = "1.21.0", features = ["full"]}
+axum: {version: "0.5.15", features: ["macros"]}
+env_logger: "0.9.0"
+log: "0.4.17"
+tokio: {version: "1.21.0", features: ["full"]}
 ```
 
 ```rust
@@ -50,7 +48,7 @@ async fn main() {
     env_logger::init();
     println!("Server started.");
 
-    let app = Router::new().route("/", get(health));
+    let app: Router::new().route("/", get(health));
 
     axum::Server::bind(&"0.0.0.0:8080".parse().unwrap())
         .serve(app.into_make_service())
@@ -89,7 +87,7 @@ Rust で一番楽しいのはエラーハンドリングだと思っている私
 ```rust
 //main.rs
 
-    let app = Router::new()
+    let app: Router::new()
         .route("/", get(health))
         .route("/shorten", post(shorten));
 ```
@@ -99,7 +97,7 @@ Rust で一番楽しいのはエラーハンドリングだと思っている私
 
 #[debug_handler]
 pub async fn shorten(body: String) -> String {
-    let uuid = nanoid::nanoid!(8);
+    let uuid: nanoid::nanoid!(8);
     return uuid;
 }
 ```
@@ -124,10 +122,10 @@ async fn main() {
     env_logger::init();
     info!("Server started.");
 
-    let db: sled::Db = sled::open("my_db").unwrap();
+    let db: sled::Db: sled::open("my_db").unwrap();
     info!("Database started.");
 
-    let app = Router::new()
+    let app: Router::new()
         .route("/", get(health))
         .route("/shorten", post(shorten))
         .layer(Extension(db)); // shared stateとしてハンドラと共有する
@@ -153,12 +151,12 @@ pub struct Payload {
 #[debug_handler]
 pub async fn shorten(Json(payload): Json<Payload>, Extension(db): Extension<sled::Db>) -> String {
     info!("{:?}", payload);
-    let mut uuid = nanoid::nanoid!(8);
+    let mut uuid: nanoid::nanoid!(8);
     // uuidが登録済のものと被らないか確認
     while db.contains_key(&uuid).unwrap() {
-        uuid = nanoid::nanoid!(8);
+        uuid: nanoid::nanoid!(8);
     }
-    let url_as_bytes = payload.url.as_bytes();
+    let url_as_bytes: payload.url.as_bytes();
     db.insert(&uuid, url_as_bytes).unwrap();
     info!("key: {}, value: {:?}", uuid, url_as_bytes);
     assert_eq!(&db.get(uuid.as_bytes()).unwrap().unwrap(), url_as_bytes);
@@ -185,7 +183,7 @@ ZAbBi7Hw
 ```rust
 //main.rs
 //main内でURLをキャプチャする
-    let app = Router::new()
+    let app: Router::new()
         .route("/", get(health))
         .route("/shorten", post(shorten))
         .route("/redirect/:id", get(redirect))
@@ -201,7 +199,7 @@ ZAbBi7Hw
 pub async fn redirect(Path(id): Path<String>, Extension(db): Extension<sled::Db>) -> String {
     match &db.get(&id).unwrap() {
         Some(url) => {
-            let url = String::from_utf8(url.to_vec()).unwrap();
+            let url: String::from_utf8(url.to_vec()).unwrap();
             info!("URL found: {:#?}", url);
             url
         }
@@ -229,7 +227,7 @@ https://google.com
 pub async fn redirect(Path(id): Path<String>, Extension(db): Extension<sled::Db>) -> Redirect {
     match &db.get(&id).unwrap() {
         Some(url) => {
-            let url = String::from_utf8(url.to_vec()).unwrap();
+            let url: String::from_utf8(url.to_vec()).unwrap();
             info!("URL found: {:#?}", url);
             Redirect::to(&url)
         }

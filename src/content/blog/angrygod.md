@@ -1,12 +1,10 @@
-+++
-title = "Joyce Carol Oates 'Sinners in the Hands of an Angry God'"
-date = 2019-10-15
-math = false
-[taxonomies]
-categories = ["review"]
-tags = ["story"]
-+++
-
+---
+title: "Joyce Carol Oates 'Sinners in the Hands of an Angry God'"
+date: 2019-10-15
+math: false
+categories: ["review"]
+tags: ["story"]
+---
 [Sinners in the Hands of an Angry God](https://www.newyorker.com/magazine/2019/10/14/sinners-in-the-hands-of-an-angry-god)
 
 舞台はNYから160kmほど離れたところにある街・Hazelton-on-Hudson（作者インタビューによると過去作でも用いている架空の街だそう）。異常気象が続く中、60歳手前の老婦人・Luceにはいつの頃からか、変な匂いがするとすぐに医療用の緑のマスクを付ける習慣ができる。それを夫のAndrewは「過剰反応だ」とか「破滅が近いと大騒ぎしている」と言って喜ばない。夫婦の周りの同世代の友人たちはみな、ガンなどの深刻な病を患っているかすでに死んでいるか、という状況。これをLuceは、地球温暖化に対する「神の罰」だと思う。そんな中、Andrewが久しぶりに友人たちを招いてホームパーティを開こうと言い出す。Luceは、以前友人たちと組んでいたヴァイオリンのカルテットを再結成し、パーティの場でシューベルトの『死と乙女』を披露しようと練習を始める。

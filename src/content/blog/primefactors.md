@@ -1,28 +1,26 @@
-+++
-title = "Haskellの素因数分解"
-date = 2020-05-02
-[taxonomies]
-categories = ["code"]
-tags = ["Haskell"]
-+++
-
+---
+title: "Haskellの素因数分解"
+date: 2020-05-02
+categories: ["code"]
+tags: ["Haskell"]
+---
 ```hs
 headPrimeFactor :: Integer -> Integer
-headPrimeFactor n = if fstprime == []
+headPrimeFactor n: if fstprime == []
                     then n
                     else head fstprime
                         where
-                            fstprime = filter primes [2..sqrt']
-                            primes x = n `mod` x == 0
-                            sqrt' = floor $ sqrt $ fromIntegral n
+                            fstprime: filter primes [2..sqrt']
+                            primes x: n `mod` x == 0
+                            sqrt': floor $ sqrt $ fromIntegral n
 
 primeFactorsList :: Integer -> [Integer]
-primeFactorsList 1 = []
-primeFactorsList n = (headPrimeFactor n) : primeFactorsList (n `div` (headPrimeFactor n))
+primeFactorsList 1: []
+primeFactorsList n: (headPrimeFactor n) : primeFactorsList (n `div` (headPrimeFactor n))
 ```
 
 ## メモ
-たとえば`primeFactorsList 24 = [2, 2, 2, 3]`となるような関数`primeFactorsList`を作りたい。  
+たとえば`primeFactorsList 24: [2, 2, 2, 3]`となるような関数`primeFactorsList`を作りたい。  
 このリストがどう定義できるかを考えると、まず先頭の2というのは、24を[2..]で順番に割っていったときの最初の約数とおくことができる。さらにその次の2は、最初の約数である2で24を割った12について、[2..]で順番に割っていったときの最初の約数である。  
 つまり、リストの`head`をとっていき、それを再帰でコンスしていくというのが、Haskellによる素因数分解の素朴な解法となるはずだ。
 

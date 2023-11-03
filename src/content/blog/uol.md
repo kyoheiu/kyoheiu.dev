@@ -1,12 +1,10 @@
-+++
-title = "University of LondonのBachelor of Science in Computer Scienceにオンライン入学した"
-date = 2023-07-12
-math = false
-[taxonomies]
-categories = ["blog"]
-tags = ["uni", "cs", "zenn"]
-+++
-
+---
+title: "University of LondonのBachelor of Science in Computer Scienceにオンライン入学した"
+date: 2023-07-12
+math: false
+categories: ["blog"]
+tags: ["uni", "cs", "zenn"]
+---
 ## 書いたこと
 - University of LondonのBachelor of Science in Computer Scienceにオンライン入学した
 - オンラインで入学できるCSの学部にはいくつか選択肢がある

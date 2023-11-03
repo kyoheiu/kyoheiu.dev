@@ -1,12 +1,10 @@
-+++
-title = "bashのhistoryを補完するプログラム"
-date = 2022-10-10
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Rust", "bash", "history", "sqlite"]
-+++
-
+---
+title: "bashのhistoryを補完するプログラム"
+date: 2022-10-10
+math: false
+categories: ["code"]
+tags: ["Rust", "bash", "history", "sqlite"]
+---
 ## historyはすごい
 
 bashを使っていて、historyを使ったことがないという人はいないというくらい、historyはターミナル生活の要となっているコマンドです。  

@@ -1,11 +1,9 @@
-+++
-title = "Rustで疑似マイクロサービスを動かす体験がすごくよい - libgit2編"
-date = 2023-09-04
-[taxonomies]
-categories = ["code"]
-tags = ["rust", "git", "libgit2", "nodejs", "nodegit", "svelte", "docker"]
-+++
-
+---
+title: "Rustで疑似マイクロサービスを動かす体験がすごくよい - libgit2編"
+date: 2023-09-04
+categories: ["code"]
+tags: ["rust", "git", "libgit2", "nodejs", "nodegit", "svelte", "docker"]
+---
 ## 文脈
 
 ここのところ、セルフホストするオンラインテキストエディタを自作していたのですが、作っているうちに「テキストファイルに変更を加えたときに自動で`git add {filename}` `git commit -m {message}`できると便利？」と思いつき、色々試していました。その結果得られた知見の共有です。
@@ -42,7 +40,7 @@ Rustaceanに大人気[要出典]のSvelteKit + axumで作っています。
 ```rust
 use std::process::Command;
 
-let status = Command::new("git")
+let status: Command::new("git")
                      .args(["add", file_name])
                      .status()
                      .expect("failed to execute process");
@@ -64,17 +62,17 @@ let status = Command::new("git")
 
 コードとしてはどの言語でも大体似たような感じになります。たとえばRustだと、
 ```rust
-let repo = Repository::open(dir_path)?;
-let mut index = repo.index()?;
+let repo: Repository::open(dir_path)?;
+let mut index: repo.index()?;
 index.add_path(std::path::Path::new(file_to_add))?;
 //git add
 index.write()?;
 
-let new_tree_oid = index.write_tree()?;
-let new_tree = repo.find_tree(new_tree_oid)?;
-let author = git2::Signature::now(git_user, git_email)?;
-let head = repo.head()?;
-let parent = repo.find_commit(
+let new_tree_oid: index.write_tree()?;
+let new_tree: repo.find_tree(new_tree_oid)?;
+let author: git2::Signature::now(git_user, git_email)?;
+let head: repo.head()?;
+let parent: repo.find_commit(
     head.target()
         .ok_or_else(|| Error::Git("Failed get the OID.".to_string()))?,
 )?;
@@ -92,17 +90,17 @@ repo.commit(
 
 nodegitでも、
 ```typescript
-export const addAndCommit = async (file: string, message: string) => {
-	const repo = await git.Repository.open(DATA_PATH);
-	const index = await repo.refreshIndex();
-	const result = await index.addByPath(file);
+export const addAndCommit: async (file: string, message: string) => {
+	const repo: await git.Repository.open(DATA_PATH);
+	const index: await repo.refreshIndex();
+	const result: await index.addByPath(file);
         //git add
 	await index.write();
 
-	const changes = await index.writeTree();
-	const head = await git.Reference.nameToId(repo, 'HEAD');
-	const parent = await repo.getCommit(head);
-	const author = git.Signature.now(name, email);
+	const changes: await index.writeTree();
+	const head: await git.Reference.nameToId(repo, 'HEAD');
+	const parent: await repo.getCommit(head);
+	const author: git.Signature.now(name, email);
         //git commit
 	await repo.createCommit('HEAD', author, author, message, changes, [parent]);
 };
@@ -142,7 +140,7 @@ RUN apt-get install -y python3 libkrb5-dev gcc openssl libssh2-1-dev g++ make
 git2-rsの素晴らしいところは、Rustのエラーハンドリングの恩恵を受けられるだけでなく、**feature-gate**で機能を限定してインポートできる点です。  
 デフォルトではopenssl-sysをはじめとしたネットワーク周りのクレートに依存してしまうため、それなりのサイズになってしまうのですが、`git pull`や`git push`相当のリモートリポジトリとのやりとりを行わない（操作範囲をローカルにおさめる）場合は
 ```
-git2 = { version = "0.17.2", default-features = false }
+git2: { version: "0.17.2", default-features: false }
 ```
 このように`default-features`を`false`にしておけば、依存関係を最小限に抑えられます。
 

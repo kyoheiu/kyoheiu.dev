@@ -1,12 +1,10 @@
-+++
-title = "starshipで絵文字を表示させる（Arch Linux）"
-date = 2021-03-31
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Linux", "Arch Linux", "starship", "fonts"]
-+++
-先日のArch Linux再インストールに伴い、色々とアプリケーションを入れ直していたのだけれど、[starship](https://starship.rs/)の絵文字表示ができなくなってしまいちょっと手こずったので、メモ。
+---
+title: "starshipで絵文字を表示させる（Arch Linux）"
+date: 2021-03-31
+math: false
+categories: ["code"]
+tags: ["Linux", "Arch Linux", "starship", "fonts"]
+---先日のArch Linux再インストールに伴い、色々とアプリケーションを入れ直していたのだけれど、[starship](https://starship.rs/)の絵文字表示ができなくなってしまいちょっと手こずったので、メモ。
 
 #### 必要なパッケージ
 - `starship`

@@ -1,11 +1,9 @@
-+++
-title = "Weike Wang 'Chemistry'"
-date = 2019-10-10
-[taxonomies]
-categories = ["review"]
-tags = ["novel"]
-+++
-
+---
+title: "Weike Wang 'Chemistry'"
+date: 2019-10-10
+categories: ["review"]
+tags: ["novel"]
+---
 [Chemistry: A novel](https://www.amazon.co.jp/dp/B01M0KOP1P/)
 
 主人公は合成化学を研究する大学院生（grad student）の女性で、一緒に住むボーイフレンドが１人、犬が１匹。化学という分野の中で、自分の才能不足を感じる日々。ある日、ラボで作業をしている最中にビーカーを割りまくり、事実上の謹慎処分となる。depression状態の主人公とボーイフレンドの関係が変質していく一方、妊娠・出産した親友は夫との関係をこじらせていく。自分の子供時代や両親から耳にしたエピソードを思い返しながら、彼女は思索をめぐらせる。

@@ -1,12 +1,10 @@
-+++
-title = "How to use Google Domains with Netlify"
-date = 2021-04-30
-math = false
-[taxonomies]
-categories = ["blog"]
-tags = ["Netlify", "Google Domains"]
-+++
-I recently jumped into Netlify-hosted from other server. This article is about how to use Google Domains with Netlify (and why GitLab pages with custom domain is *bad*).
+---
+title: "How to use Google Domains with Netlify"
+date: 2021-04-30
+math: false
+categories: ["blog"]
+tags: ["Netlify", "Google Domains"]
+---I recently jumped into Netlify-hosted from other server. This article is about how to use Google Domains with Netlify (and why GitLab pages with custom domain is *bad*).
 
 First of all, Options of hosting service I had in mind were:
 

@@ -1,11 +1,9 @@
-+++
-title = "Tessa Hadley 'Funny Little Snake'"
-date = 2019-10-11
-[taxonomies]
-categories = ["review"]
-tags = ["story"]
-+++
-
+---
+title: "Tessa Hadley 'Funny Little Snake'"
+date: 2019-10-11
+categories: ["review"]
+tags: ["story"]
+---
 [The O. Henry Prize Stories 100th Anniversary Edition (2019) (The O. Henry Prize Collection)](https://www.amazon.co.jp/dp/B07Q188RRQ/)
 
 O.ヘンリー賞は今年で創設100周年だそうです。巻頭には賞のこれまでの歴史が記されていて興味深い。  

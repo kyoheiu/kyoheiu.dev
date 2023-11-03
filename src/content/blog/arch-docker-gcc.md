@@ -1,12 +1,10 @@
-+++
-title = "RustプロジェクトのビルドテストをGithub Actionsで行う（Arch Linuxのタグに要注意）"
-date = 2021-11-25
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Github Actions", "Arch Linux", "docker", "Rust"]
-+++
-
+---
+title: "RustプロジェクトのビルドテストをGithub Actionsで行う（Arch Linuxのタグに要注意）"
+date: 2021-11-25
+math: false
+categories: ["code"]
+tags: ["Github Actions", "Arch Linux", "docker", "Rust"]
+---
 タイトルの通りなのだが、若干ハマったので記録しておきます。
 
 Rustのプロジェクトにおいて、自分のローカル環境以外でもうまくインストールできるかのテストを行うためにGitHub Actionsを使っている。
@@ -67,7 +65,7 @@ jobsは３つ。Ubuntu上・macOS上・Arch Linux上それぞれでのインス�
 ```
 error: linker `cc` not found
   |
-  = note: No such file or directory (os error 2)
+ : note: No such file or directory (os error 2)
 ```
 
 とビルドエラーが出てしまう。 

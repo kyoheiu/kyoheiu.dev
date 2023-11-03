@@ -1,14 +1,12 @@
-+++
-title = "OSSのREADME.md更新について"
-date = 2021-05-01
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Nim", "Git", "GitHub"]
-+++
-先日publicリポジトリに移したmarkdownパーサ`nmark`をちまちま更新しているのだが、更新するたびに以下のような作業が発生していてだんだん面倒になってきた。
+---
+title: "OSSのREADME.md更新について"
+date: 2021-05-01
+math: false
+categories: ["code"]
+tags: ["Nim", "Git", "GitHub"]
+---先日publicリポジトリに移したmarkdownパーサ`nmark`をちまちま更新しているのだが、更新するたびに以下のような作業が発生していてだんだん面倒になってきた。
 
-<script>window.addEventListener("message", function(e) {var i = e.data.split(":")[1];var h = e.data.split(":")[2];if (e.data.split(":")[0] == "swimlanes-io" && i && h) {document.getElementById("__sw-io-" + i).setAttribute("style","height:" + h + "px");}}, false);</script><div id="__sw-io-fZAw"><iframe style="border:none; width:100%; height:100%" scrolling="no" src="https://cdn.swimlanes.io/dist/embeded.html#fZA7D8IwDIT3/ApvQKTC3gEJiYqJhYq9aWJoROpEeUj039MHUKlDN8v3new7zqkV/gXJKRERvE1RE3LO2LTPjjAO+Y8ItsXYaHrOgBRBbMvyssuBEBVECx6lcDF5hBpJNgPJ/tjCU5Fua4OgKURhzHSvWsVBQqZyjwZFwFFc4ZvOoX/0qWCzPwwC1EkbtVlYvjGldR3g21kf+yjz98s67lMdt+J0vhbsAw==#fZAw"></iframe></div>
+<script>window.addEventListener("message", function(e) {var i: e.data.split(":")[1];var h: e.data.split(":")[2];if (e.data.split(":")[0] == "swimlanes-io" && i && h) {document.getElementById("__sw-io-" + i).setAttribute("style","height:" + h + "px");}}, false);</script><div id="__sw-io-fZAw"><iframe style="border:none; width:100%; height:100%" scrolling="no" src="https://cdn.swimlanes.io/dist/embeded.html#fZA7D8IwDIT3/ApvQKTC3gEJiYqJhYq9aWJoROpEeUj039MHUKlDN8v3new7zqkV/gXJKRERvE1RE3LO2LTPjjAO+Y8ItsXYaHrOgBRBbMvyssuBEBVECx6lcDF5hBpJNgPJ/tjCU5Fua4OgKURhzHSvWsVBQqZyjwZFwFFc4ZvOoX/0qWCzPwwC1EkbtVlYvjGldR3g21kf+yjz98s67lMdt+J0vhbsAw==#fZAw"></iframe></div>
 
 （さっき見つけた[swimlane.io](https://swimlanes.io/)を使ってみたかったのであえて作ってみた）
 
@@ -31,11 +29,11 @@ tags = ["Nim", "Git", "GitHub"]
 シェルスクリプトの代わりにNimscriptを書いて、パフォーマンス比較の詳細を記したmarkdownファイルをREADME.mdとは別に作り、そこに`hyperfine`の結果をコピーするというやり方にしてみた。
 
 ```nim
-mode = ScriptMode.Verbose
+mode: ScriptMode.Verbose
 
-const version = "0.1.6"
+const version: "0.1.6"
 
-const text = """
+const text: """
 # Perfomance comparison detail
 ...
 ### nmark@""" 
@@ -45,7 +43,7 @@ cd "../casa"
 exec("nimble install nmark")
 exec("nim c -d:release casa")
 exec("hyperfine './casa build' --export-markdown nmark.md")
-let s = text & version & """
+let s: text & version & """
 >>
 """ & readFile("nmark.md")
 

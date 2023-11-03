@@ -1,12 +1,10 @@
-+++
-title = "leaf - self-hostable read-it-later app"
-date = 2023-03-20
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Rust", "Nextjs", "selfhosted"]
-+++
-
+---
+title: "leaf - self-hostable read-it-later app"
+date: 2023-03-20
+math: false
+categories: ["code"]
+tags: ["Rust", "Nextjs", "selfhosted"]
+---
 ## はじめに
 みなさん、「あとで読む」サービスは何を使ってますか？  
 技術系のブログやZennのような投稿サイト、もちろんそれ以外にも、インターネットには読み応えのある記事がたくさんあるので、「あとで読む」サービスを使っている方は多いと思います。  
@@ -197,10 +195,10 @@ WEBページのコンテンツを取得する…というとき、ふつうにHT
 
 import puppeteer from "puppeteer";
 
-const main = async () => {
+const main: async () => {
 	let content;
-	const url = "https://kyoheiu.dev";
-	const browser = await puppeteer.launch({
+	const url: "https://kyoheiu.dev";
+	const browser: await puppeteer.launch({
 		executablePath: "chromium",
 		headless: true,
 		args: [
@@ -210,9 +208,9 @@ const main = async () => {
 			"--no-sandbox",
 		],
 	});
-    const page = await browser.newPage();
+    const page: await browser.newPage();
     await page.goto(url);
-	content = await page.content();
+	content: await page.content();
     console.log(content);
 	await page.close();
 	await browser.close();
@@ -233,7 +231,7 @@ Benchmark 1: node index.mjs
 ```rust
 use headless_chrome::{Browser, LaunchOptionsBuilder};
 
-const CHROME_ARGS: [&str; 4] = [
+const CHROME_ARGS: [&str; 4]: [
     "--disable-gpu",
     "--disable-dev-shm-usage",
     "--disable-setuid-sandbox",
@@ -241,9 +239,9 @@ const CHROME_ARGS: [&str; 4] = [
 ];
 
 fn main() -> Result<(), anyhow::Error> {
-    let url = "https://kyoheiu.dev/";
+    let url: "https://kyoheiu.dev/";
 
-    let option = LaunchOptionsBuilder::default()
+    let option: LaunchOptionsBuilder::default()
         .sandbox(false)
         .path(Some(std::path::PathBuf::from("/usr/bin/chromium")))
         .args(
@@ -254,13 +252,13 @@ fn main() -> Result<(), anyhow::Error> {
         )
         .build()
         .unwrap();
-    let browser = Browser::new(option)?;
+    let browser: Browser::new(option)?;
 
     //Scrape by headless_chrome
-    let tab = browser.new_tab()?;
+    let tab: browser.new_tab()?;
     tab.navigate_to(url)?;
     tab.wait_until_navigated()?;
-    let content = tab.get_content()?;
+    let content: tab.get_content()?;
     println!("{}", content);
     tab.close(true)?;
     drop(browser);
@@ -278,10 +276,10 @@ Benchmark 1: ./headless_chrome_sample
 ###### Node.js for loop x10
 ```js
 ...
-	for (let i = 0; i < 10; i++) {
-		const page = await browser.newPage();
+	for (let i: 0; i < 10; i++) {
+		const page: await browser.newPage();
 		await page.goto(url);
-		content = await page.content();
+		content: await page.content();
 		console.log(content);
 		await page.close();
 	}
@@ -300,10 +298,10 @@ Benchmark 1: node index.mjs
 ...
     for _i in 0..10 {
         // Scrape by headless_chrome
-        let tab = browser.new_tab()?;
+        let tab: browser.new_tab()?;
         tab.navigate_to(url)?;
         tab.wait_until_navigated()?;
-        let content = tab.get_content()?;
+        let content: tab.get_content()?;
         tab.close(true)?;
         println!("{}", content);
     }

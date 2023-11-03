@@ -1,11 +1,9 @@
-+++
-title = "Jesse Ball 'The Divers' Game'"
-date = 2019-12-23
-[taxonomies]
-categories = ["review"]
-tags = ["novel"]
-+++
-
+---
+title: "Jesse Ball 'The Divers' Game'"
+date: 2019-12-23
+categories: ["review"]
+tags: ["novel"]
+---
 [The Divers' Game: A Novel](https://www.amazon.co.jp/dp/B07CWT59DC/)
 
 市民であるpatsと、移民およびその子孫であるquadsとに人々が分けられて生きる社会。patsは皆ガスマスクとガス缶を持っていて、いざというときはquadsをガスで殺しても罪に問われない。quadsはpatsと見分けがつくように、全員片方の手の親指を切り取られ、顔に焼印をおされる。

@@ -1,12 +1,10 @@
-+++
-title = "NimでCSVファイルをパースする" 
-date = 2021-01-20
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Nim", "CSV parser"]
-+++
-最近勉強中の言語Nimで、ちょっとした作業用にプログラムを書いてみた。
+---
+title: "NimでCSVファイルをパースする" 
+date: 2021-01-20
+math: false
+categories: ["code"]
+tags: ["Nim", "CSV parser"]
+---最近勉強中の言語Nimで、ちょっとした作業用にプログラムを書いてみた。
 NimはPython風の文法で簡潔かつコンパクトに高速なプログラムを書ける言語。C / C++ / Objective-Cのコードにトランスパイルすることができ、Cのライブラリも使用することが可能。
 
 今回触ったのはStandard Libaryのparsecsv。

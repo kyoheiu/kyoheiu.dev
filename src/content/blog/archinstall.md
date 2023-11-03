@@ -1,11 +1,9 @@
-+++
-title = "Arch Linuxインストールメモ(2020)"
-date = 2020-09-20
-[taxonomies]
-categories = ["code"]
-tags = ["linux", "Arch Linux"]
-+++
-
+---
+title: "Arch Linuxインストールメモ(2020)"
+date: 2020-09-20
+categories: ["code"]
+tags: ["linux", "Arch Linux"]
+---
 # (2021-03-21) このメモは古く、現行バージョンでは使えません。記録として残しています。ArchWikiを読みましょう。
 
 Arch Linuxインストールの覚書。将来の自分へのメモとして。
@@ -37,15 +35,15 @@ Proceed? (Y/N): y
 
 Command (? for help): n
 Partition number (1-128, default 1): default
-First sector (34-xxxxxxxxx, default = xxxx) or {+-}size{KMGTP}: default
-Last sector (xxxx-xxxxxxxxx, default = xxxxxxxxx) or {+-}size{KMGTP}: +500M
-Hex code or GUID (L to show codes, Enter = 8300): ef00
+First sector (34-xxxxxxxxx, default: xxxx) or {+-}size{KMGTP}: default
+Last sector (xxxx-xxxxxxxxx, default: xxxxxxxxx) or {+-}size{KMGTP}: +500M
+Hex code or GUID (L to show codes, Enter: 8300): ef00
 
 Command (? for help): n
 Partition number (2-128, default 2): default
-First sector (34-xxxxxxxxx, default = xxxxxx) or {+-}size{KMGTP}: default
-Last sector (xxxxxx-xxxxxxxxx, default = xxxxxxxxx) or {+-}size{KMGTP}: default
-Hex code or GUID (L to show codes, Enter = 8300): default
+First sector (34-xxxxxxxxx, default: xxxxxx) or {+-}size{KMGTP}: default
+Last sector (xxxxxx-xxxxxxxxx, default: xxxxxxxxx) or {+-}size{KMGTP}: default
+Hex code or GUID (L to show codes, Enter: 8300): default
 
 Command (? for help): w
 

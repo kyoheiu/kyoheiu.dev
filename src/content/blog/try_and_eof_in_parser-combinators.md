@@ -1,11 +1,9 @@
-+++
-title = "各パーサーコンビネータにおけるtry/eof(endOfInput)の挙動"
-date = 2021-07-31
-[taxonomies]
-categories = ["code"]
-tags = ["Haskell", "Megaparsec", "Attoparsec", "Parsec"]
-+++
-[Advent of Code 2020のDay 19](https://adventofcode.com/2020/day/19)を解いていて、複数パーサーの選択でしばらくつまずいていたのでメモ。
+---
+title: "各パーサーコンビネータにおけるtry/eof(endOfInput)の挙動"
+date: 2021-07-31
+categories: ["code"]
+tags: ["Haskell", "Megaparsec", "Attoparsec", "Parsec"]
+---[Advent of Code 2020のDay 19](https://adventofcode.com/2020/day/19)を解いていて、複数パーサーの選択でしばらくつまずいていたのでメモ。
 
 ### TL;DR
 - MegaparsecおよびParsecでは、tryでくるんだパーサー内でeofを使うと正常に動かない場合がある？
@@ -27,7 +25,7 @@ Day 19では次のようなテキストを適切にパースすることが求�
 これを、ひとまず次のような型としてパースしたい。
 
 ```
-data Rule = Zero [Int]
+data Rule: Zero [Int]
           | Pairs Int [(Int,Int)]
           | Key Int Char
           deriving Show
@@ -53,46 +51,46 @@ import qualified Data.Text as T
 import Data.Void
 import Data.Either (rights)
 
-type Parser = Parsec Void String
+type Parser: Parsec Void String
 
-readInt x = read x :: Int
+readInt x: read x :: Int
 
-data Rule = Zero [Int]
+data Rule: Zero [Int]
           | Pairs Int [(Int,Int)]
           | Key Int Char
           deriving Show
 
 zero :: Parser Rule
-zero = do
+zero: do
   string "0: "
   list <- sepBy1 (many alphaNumChar) (char ' ')
   return $ Zero (map readInt list)
 
 pair :: Parser (Int,Int)
-pair = do
+pair: do
   y <- many digitChar
   char ' '
   z <- many digitChar
   return (readInt y, readInt z)
 
 pairs :: Parser Rule
-pairs = do
+pairs: do
   n <- readInt <$> many alphaNumChar
   string ": "
   p <- sepBy1 pair (string " | ")
   return $ Pairs n p
 
 key :: Parser Rule
-key = do
+key: do
   n <- readInt <$> many alphaNumChar
   string ": \""
   c <- letterChar
   char '\"'
   return $ Key n c
 
-rules = try zero <|> key <|> pairs
+rules: try zero <|> key <|> pairs
 
-main = readFile "day19e.txt" >>= print . rights . map (parse rules "") . lines
+main: readFile "day19e.txt" >>= print . rights . map (parse rules "") . lines
 ```
 
 `cabal repl`で`main`を実行すると、結果はこうなる。
@@ -104,7 +102,7 @@ main = readFile "day19e.txt" >>= print . rights . map (parse rules "") . lines
 `Data.Either`の`rights`で強制的に`Right`のみを抽出しているので分かりにくいが、２〜４行めはパースに失敗している。ちなみにエラーメッセージはかなり難解。
 
 ```
-Right (Zero [4,1,5]),Left (ParseErrorBundle {bundleErrors = TrivialError 1 (Just (Tokens (':' :| " 2"))) (fromList [Tokens (':' :| " \""),Label ('a' :| "lphanumeric character")]) :| [], bundlePosState = PosState {pstateInput = "1: 2 3 | 3 2", pstateOffset = 0, pstateSourcePos = SourcePos {sourceName = "", sourceLine = Pos 1, sourceColumn = Pos 1}, pstateTabWidth = Pos 8, pstateLinePrefix = ""}}),Left (ParseErrorBundle {bundleErrors = TrivialError 1 (Just (Tokens (':' :| " 4"))) (fromList [Tokens (':' :| " \""),Label ('a' :| "lphanumeric character")]) :| [], bundlePosState = PosState {pstateInput = "2: 4 4 | 5 5", pstateOffset = 0, pstateSourcePos = SourcePos {sourceName = "", sourceLine = Pos 1, sourceColumn = Pos 1}, pstateTabWidth = Pos 8, pstateLinePrefix = ""}}),Left (ParseErrorBundle {bundleErrors = TrivialError 1 (Just (Tokens (':' :| " 4"))) (fromList [Tokens (':' :| " \""),Label ('a' :| "lphanumeric character")]) :| [], bundlePosState = PosState {pstateInput = "3: 4 5 | 5 4", pstateOffset = 0, pstateSourcePos = SourcePos {sourceName = "", sourceLine = Pos 1, sourceColumn = Pos 1}, pstateTabWidth = Pos 8, pstateLinePrefix = ""}}),Right (Key 4 'a'),Right (Key 5 'b')]
+Right (Zero [4,1,5]),Left (ParseErrorBundle {bundleErrors: TrivialError 1 (Just (Tokens (':' :| " 2"))) (fromList [Tokens (':' :| " \""),Label ('a' :| "lphanumeric character")]) :| [], bundlePosState: PosState {pstateInput: "1: 2 3 | 3 2", pstateOffset: 0, pstateSourcePos: SourcePos {sourceName: "", sourceLine: Pos 1, sourceColumn: Pos 1}, pstateTabWidth: Pos 8, pstateLinePrefix: ""}}),Left (ParseErrorBundle {bundleErrors: TrivialError 1 (Just (Tokens (':' :| " 4"))) (fromList [Tokens (':' :| " \""),Label ('a' :| "lphanumeric character")]) :| [], bundlePosState: PosState {pstateInput: "2: 4 4 | 5 5", pstateOffset: 0, pstateSourcePos: SourcePos {sourceName: "", sourceLine: Pos 1, sourceColumn: Pos 1}, pstateTabWidth: Pos 8, pstateLinePrefix: ""}}),Left (ParseErrorBundle {bundleErrors: TrivialError 1 (Just (Tokens (':' :| " 4"))) (fromList [Tokens (':' :| " \""),Label ('a' :| "lphanumeric character")]) :| [], bundlePosState: PosState {pstateInput: "3: 4 5 | 5 4", pstateOffset: 0, pstateSourcePos: SourcePos {sourceName: "", sourceLine: Pos 1, sourceColumn: Pos 1}, pstateTabWidth: Pos 8, pstateLinePrefix: ""}}),Right (Key 4 'a'),Right (Key 5 'b')]
 ```
 
 色々と試行錯誤した結果わかったのは、`try`でくるんでいるからといって必ず適切なパーサーを選択してくれるわけではない（適切に選択してもらうためには工夫が必要）ということ。
@@ -135,7 +133,7 @@ Pairs 1 [(2,3),(3,2)]
 次に`key`をトライする。そうすると、最初の`many alphaNumChar`は成功するが、次の`string ": \""`は失敗するのでまたbacktrackが発生する…はずなのだがそうならず、パースは失敗に終わる。
 
 ### `try`以降の選択肢の順番なのか？
-最初に、`try`のくるみ方に問題があるのかもしれないと考えて、`try`のあとを色々と変えてみた。すると実際、`rules = try key <|> zero <|> pairs`とした場合は、
+最初に、`try`のくるみ方に問題があるのかもしれないと考えて、`try`のあとを色々と変えてみた。すると実際、`rules: try key <|> zero <|> pairs`とした場合は、
 
 ```
 [Zero [4,1,5],Pairs 1 [(2,3),(3,2)],Pairs 2 [(4,4),(5,5)],Pairs 3 [(4,5),(5,4)],Key 4 'a',Key 5 'b']
@@ -143,7 +141,7 @@ Pairs 1 [(2,3),(3,2)]
 
 となり成功している。
 
-さらに、`rules = try key <|> pairs <|> zero`の場合。
+さらに、`rules: try key <|> pairs <|> zero`の場合。
 
 ```
 [Pairs 0 [(4,1)],Pairs 1 [(2,3),(3,2)],Pairs 2 [(4,4),(5,5)],Pairs 3 [(4,5),(5,4)],Key 4 'a',Key 5 'b']
@@ -168,7 +166,7 @@ order | result | T/F
 
 ```hs
 pairs :: Parser Rule
-pairs = do
+pairs: do
   n <- readInt <$> many alphaNumChar
   string ": "
   p <- sepBy pair (string " | ")
@@ -189,21 +187,21 @@ pairs = do
 
 ```hs
 zero :: Parser Rule
-zero = do
+zero: do
   string "0: "
   list <- sepBy1 (many alphaNumChar) (char ' ')
   eof
   return $ Zero (map readInt list)
 
 pair :: Parser (Int,Int)
-pair = do
+pair: do
   y <- readInt <$> many alphaNumChar
   char ' '
   z <- readInt <$> many alphaNumChar
   return (y,z)
 
 pairs :: Parser Rule
-pairs = do
+pairs: do
   n <- readInt <$> many alphaNumChar
   string ": "
   p <- sepBy1 pair (string " | ")
@@ -211,7 +209,7 @@ pairs = do
   return $ Pairs n p
 
 key :: Parser Rule
-key = do
+key: do
   n <- readInt <$> many alphaNumChar
   string ": \""
   c <- letterChar
@@ -233,7 +231,7 @@ key = do
 
 ```
 test :: Parser String
-test = do
+test: do
   s <- many alphaNumChar
   eof
   return s
@@ -244,11 +242,9 @@ test = do
 "aaa"
 *Main> parseTest test "aaa111"
 "aaa111"
-*Main> parseTest test "aaa111+++"
-1:7:
+---1:7:
   |
-1 | aaa111+++
-  |       ^
+---  |       ^
 unexpected '+'
 expecting alphanumeric character or end of input
 ```
@@ -266,29 +262,29 @@ import qualified Data.Text as T
 import qualified Data.Text.IO as TIO
 import Data.Either (rights)
 
-readInt x = read x :: Int
+readInt x: read x :: Int
 
-data Rule = Zero [Int]
+data Rule: Zero [Int]
           | Pairs Int [(Int,Int)]
           | Key Int Char
           deriving Show
 
 zero :: Parser Rule
-zero = do
+zero: do
   string "0: "
   list <- many1 digit `sepBy1` char ' '
   endOfInput
   return $ Zero (map readInt list)
 
 pair :: Parser (Int,Int)
-pair = do
+pair: do
   x <- readInt <$> many1 digit
   space
   y <- readInt <$> many1 digit
   return (x,y)
 
 pairs :: Parser Rule
-pairs = do
+pairs: do
   n <- readInt <$> many1 digit
   string ": "
   p <- sepBy1 pair (string " | ")
@@ -296,7 +292,7 @@ pairs = do
   return $ Pairs n p
 
 key :: Parser Rule
-key = do
+key: do
   n <- readInt <$> many1 digit
   string ": \""
   c <- letter
@@ -304,9 +300,9 @@ key = do
   endOfInput
   return $ Key n c
 
-rules = choice [pairs, key, zero]
+rules: choice [pairs, key, zero]
 
-main = TIO.readFile "day19e.txt" >>= print . rights . map (parseOnly rules) . T.lines
+main: TIO.readFile "day19e.txt" >>= print . rights . map (parseOnly rules) . T.lines
 
 ---
 
@@ -319,7 +315,7 @@ main = TIO.readFile "day19e.txt" >>= print . rights . map (parseOnly rules) . T.
 ちなみに各パーサーの`endOfInput`を外すと、
 
 ```
--- rules = choice [pairs, key, zero]
+-- rules: choice [pairs, key, zero]
 [Pairs 0 [(4,1)],Pairs 1 [(2,3),(3,2)],Pairs 2 [(4,4),(5,5)],Pairs 3 [(4,5),(5,4)],Key 4 "a",Key 5 "b"]
 ```
 

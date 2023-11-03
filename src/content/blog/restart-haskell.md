@@ -1,12 +1,10 @@
-+++
-title = "Haskell環境再構築"
-date = 2021-05-05
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Haskell", "haskell-language-server"]
-+++
-ここ数ヶ月、ずっとimperative programmingをしていてちょっと疲れてきたのと、今Haskellに戻ったら前よりはもう少し書ける／わかるようになっているかもしれないという期待で、あらためてHaskellに入門してみる。
+---
+title: "Haskell環境再構築"
+date: 2021-05-05
+math: false
+categories: ["code"]
+tags: ["Haskell", "haskell-language-server"]
+---ここ数ヶ月、ずっとimperative programmingをしていてちょっと疲れてきたのと、今Haskellに戻ったら前よりはもう少し書ける／わかるようになっているかもしれないという期待で、あらためてHaskellに入門してみる。
 ### 環境構築
 前にやっていたときは確か存在していなかったような気がするのだが、`ghcup`という`rustup`的なツールが登場していたのでさっそく入れてみる。  
 これはghc, cabal, haskell-language-server(HLS)のインストール・バージョン管理を行ってくれるありがたいツールで、途中２回ほどコマンド入力する場面があるので完全放置では完了まで行かないが、スムーズにインストールが可能。以前はstackを使っていたが、cabalがだいぶフレンドリーになってきているという噂を見かけたのでcabal一本でやってみようかと思っている。
@@ -38,16 +36,16 @@ import Data.Function
 
 fib:: Integer -> Integer -> Integer -> Integer
 fib a b count
-    | count == 1 || count == 0 = b
-    | count >= 2 = fib b (a+b) (count-1)
-    | otherwise = 0
+    | count == 1 || count == 0: b
+    | count >= 2: fib b (a+b) (count-1)
+    | otherwise: 0
 
-makeFib = fib 1 1
+makeFib: fib 1 1
 
 euler2FibList:: Integer -> Integer
-euler2FibList n = takeWhile (\x -> makeFib x < n) [1..] & map makeFib & filter even & sum
+euler2FibList n: takeWhile (\x -> makeFib x < n) [1..] & map makeFib & filter even & sum
 
-main = print $ euler2FibList 4000000
+main: print $ euler2FibList 4000000
 ```
 
 `makeFib`を２回使っているのがかっこよくないですね。

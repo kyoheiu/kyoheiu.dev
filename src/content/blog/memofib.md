@@ -1,11 +1,9 @@
-+++
-title = "フィボナッチ数列（memoization）"
-date = 2020-05-04
-[taxonomies]
-categories = ["code"]
-tags = ["Haskell"]
-+++
-
+---
+title: "フィボナッチ数列（memoization）"
+date: 2020-05-04
+categories: ["code"]
+tags: ["Haskell"]
+---
 ## memoization(?)
 次に、memoizationによるフィボナッチ数列関数の作成にトライしてみる。  
 memoizationとは日本語だとメモ化とも呼ばれるプログラミングの手法で、「一度計算したものを記録しておき、必要なときに取り出すようにする」効率化のこと、らしい。
@@ -14,11 +12,11 @@ memoizationとは日本語だとメモ化とも呼ばれるプログラミング
 [wiki.haskell.org](https://wiki.haskell.org/Memoization)を参考に、memoizationを実装してみる。リストに計算結果を記録しておき、都度それを取り出す、というものだ。
 
 ```
-memoFib1 = (map fib [0..] !!)
+memoFib1: (map fib [0..] !!)
             where
-                fib 0 = 1
-                fib 1 = 1
-                fib n = memoFib1 (n-1) + memoFib1 (n-2)
+                fib 0: 1
+                fib 1: 1
+                fib n: memoFib1 (n-1) + memoFib1 (n-2)
 ```
 
 ```
@@ -31,11 +29,11 @@ memoFib1 = (map fib [0..] !!)
 ところが、次のように少しだけ変形をすると、結果は全く異なるものになる。
 
 ```
-memoFib2 n = (map fib [0..]) !! n
+memoFib2 n: (map fib [0..]) !! n
             where
-                fib 0 = 1
-                fib 1 = 1
-                fib n = memoFib2 (n-1) + memoFib2 (n-2)
+                fib 0: 1
+                fib 1: 1
+                fib n: memoFib2 (n-1) + memoFib2 (n-2)
 ```
 
 ```
@@ -53,18 +51,18 @@ memoFib2 n = (map fib [0..]) !! n
 上記の回答によると、それぞれの`memoFibx`はラムダ計算表現を用いて次のように変形できる。
 
 ```
-memoFib1 = let fibList = map fib [0..] in (fibList !!)
-<-> memoFib1 = let fibList = map fib [0..] in \n -> fibList !! n
+memoFib1: let fibList: map fib [0..] in (fibList !!)
+<-> memoFib1: let fibList: map fib [0..] in \n -> fibList !! n
 
-memoFib2 n = let fibList = map fib [0..] in fibList !! n
-<-> memoFib2 n = \n -> let fibList = map fib [0..] in fibList !! n
+memoFib2 n: let fibList: map fib [0..] in fibList !! n
+<-> memoFib2 n: \n -> let fibList: map fib [0..] in fibList !! n
 ```
 
 したがって、結局
 
 ```
-(memoFib1) let fibList = map fib [0..] in \n -> fibList !! n
-(memoFib2) \n -> let fibList = map fib [0..] in fibList !! n
+(memoFib1) let fibList: map fib [0..] in \n -> fibList !! n
+(memoFib2) \n -> let fibList: map fib [0..] in fibList !! n
 ```
 
 この２つの式の差はなにか、ということになる。  
@@ -76,12 +74,12 @@ memoFib2 n = let fibList = map fib [0..] in fibList !! n
 そこで、最初の`memoFib2`を、次のように`where`節を用いて表現し直してみる。
 
 ```
-memoFib3 n = fibList !! n
+memoFib3 n: fibList !! n
     where
-        fibList = map fib [0..] 
-        fib 0 = 1
-        fib 1 = 1
-        fib n = (fibList !! (n-1)) + (fibList !! (n-2))
+        fibList: map fib [0..] 
+        fib 0: 1
+        fib 1: 1
+        fib n: (fibList !! (n-1)) + (fibList !! (n-2))
 ```
 
 ```
@@ -94,11 +92,11 @@ redditの回答にヒントを得て、`map fib [0..]`を１行目から外し�
 これを、次の関数定義と見比べると、何が問題なのかが見えてくるように思う。
 
 ```
-memoFib4 n = (map fib [0..]) !! n
+memoFib4 n: (map fib [0..]) !! n
     where
-        fib 0 = 1
-        fib 1 = 1
-        fib n = (map fib [0..] !! (n-1)) + (map fib [0..] !! (n-2))
+        fib 0: 1
+        fib 1: 1
+        fib n: (map fib [0..] !! (n-1)) + (map fib [0..] !! (n-2))
 ```
 
 ```
@@ -113,4 +111,4 @@ Fib3では、`map fib [0..]`が一度だけ計算され、`fibList`に保存さ�
 これを踏まえて元の定義をもう一度見てみると、話は実は非常に単純で、最初の`Fib2`では、`fib`は`memoFib2`に、そして`memoFib2`は`map fib [0..]`に結びついている。したがって`map fib [0..]`が最低限以上の回数計算されている。一方、`memoFib1`がポイントフリーで表現されているということは、`map fib [0..]`は最終的に必要になった段階でようやく評価される、ということを実質的に意味している。このポイントフリーと遅延評価の関係を意識できていないと、大変混乱する羽目になる、というわけだった。  
 適当に人のコードを写経すると理解不足なところが出てくる、という教訓。
 
-ところでmemoizationに話を戻すと、この場合、`fibList = map fib [0..]` がその役割を担っている。`slowfib`からスタートしてみると、`map f xs`で計算結果を記録していくmemoizationのやり方はとても自然に感じられる。
+ところでmemoizationに話を戻すと、この場合、`fibList: map fib [0..]` がその役割を担っている。`slowfib`からスタートしてみると、`map f xs`で計算結果を記録していくmemoizationのやり方はとても自然に感じられる。

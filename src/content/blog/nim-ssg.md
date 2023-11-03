@@ -1,12 +1,10 @@
-+++
-title = "Nimで静的サイトジェネレーターを実装する"
-date = 2021-02-02
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Nim", "Static Site Generator"]
-+++
-Rust製の静的サイトジェネレーターZolaでスクラッチからテーマを自作したことで、静的サイトジェネレーターそのものに興味が出てきた（以下、「ジェネレーター」と略す箇所が多々あります）。  
+---
+title: "Nimで静的サイトジェネレーターを実装する"
+date: 2021-02-02
+math: false
+categories: ["code"]
+tags: ["Nim", "Static Site Generator"]
+---Rust製の静的サイトジェネレーターZolaでスクラッチからテーマを自作したことで、静的サイトジェネレーターそのものに興味が出てきた（以下、「ジェネレーター」と略す箇所が多々あります）。  
 そこで調べてみて初めて知ったのだが、実は世の中には無数といっていい数の静的サイトジェネレーターがある。
 
 [Static Site Generators - Top Open Source SSGs | Jamstack](https://jamstack.org/generators/)
@@ -52,9 +50,9 @@ Rust製の静的サイトジェネレーターZolaでスクラッチからテー
 テンプレートについては、Nim付属のSource Code Filtersと呼ばれるテンプレートエンジンを使った。たとえば各記事ページのテンプレートを用意したい場合は、こうなる。
 
 ```
-#? stdtmpl(subsChar = '$', metaChar = '#')
+#? stdtmpl(subsChar: '$', metaChar: '#')
 #proc generatePageHtml(siteTitle, siteUrl, pageContent, pageDate, pageTitle: string, pageCategories, pageTags: seq): string =
-#  result = ""
+#  result: ""
 <!DOCTYPE html>
 <html lang="en">
 
@@ -103,7 +101,7 @@ import markdown, ...
 include "templates/page_base.nimf"
 ...
 
-let pageHtml   = generatePageHtml(siteTitle, siteUrl, pageContent,...
+let pageHtml  : generatePageHtml(siteTitle, siteUrl, pageContent,...
 ```
 
 これでHTMLファイルとして生成できる。今の設定で生成できるpublicディレクトリの内容は以下の通り。

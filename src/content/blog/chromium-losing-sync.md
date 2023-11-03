@@ -1,12 +1,10 @@
-+++
-title = "Chromium losing Sync support on March 15"
-date = 2021-02-05
-math = false
-[taxonomies]
-categories = ["blog"]
-tags = ["Google", "Chromium", "security", "linux"]
-+++
-### 経緯
+---
+title: "Chromium losing Sync support on March 15"
+date: 2021-02-05
+math: false
+categories: ["blog"]
+tags: ["Google", "Chromium", "security", "linux"]
+---### 経緯
 
 [Chromium Blog: Limiting Private API availability in Chromium](https://blog.chromium.org/2021/01/limiting-private-api-availability-in.html)
 

@@ -1,12 +1,10 @@
-+++
-title = "JavaScriptをDenoでシンプルに書く"
-date = 2022-03-09
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["JavaScript", "Deno", "Go"]
-+++
-ちょっとしたタスクでTwitter APIを叩かないといけなくなり、前は叩くところからデータフォーマットまで全部Rustのファイル１枚で書いたので、今度は別の言語にするかな～と、軽い気持ちでGoで書いてみたらなぜかうまくいかなかった。
+---
+title: "JavaScriptをDenoでシンプルに書く"
+date: 2022-03-09
+math: false
+categories: ["code"]
+tags: ["JavaScript", "Deno", "Go"]
+---ちょっとしたタスクでTwitter APIを叩かないといけなくなり、前は叩くところからデータフォーマットまで全部Rustのファイル１枚で書いたので、今度は別の言語にするかな～と、軽い気持ちでGoで書いてみたらなぜかうまくいかなかった。
 
 json.Unmarshalがよしなに動いてくれなかったのがうまくいかなかった理由（多分）。jsonの処理はあまりにも普遍的なのでどの言語でも一緒だろ～～とか思ってたら意外とそんなことはなかった…。Unmarshalが動かなかったときのデバッグってどうすればいいんだろう。
 

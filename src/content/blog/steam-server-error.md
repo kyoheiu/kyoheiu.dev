@@ -1,11 +1,9 @@
-+++
-title = "Steamサーバー接続時トラブルを解決する（Arch Linux）"
-date = 2020-12-23
-[taxonomies]
-categories = ["code"]
-tags = ["linux", "Arch Linux", "steam", "DHCP"]
-+++
-
+---
+title: "Steamサーバー接続時トラブルを解決する（Arch Linux）"
+date: 2020-12-23
+categories: ["code"]
+tags: ["linux", "Arch Linux", "steam", "DHCP"]
+---
 ### 環境
 OS: Arch Linux x86_64  
 Kernel: 5.9.14-arch1-1  

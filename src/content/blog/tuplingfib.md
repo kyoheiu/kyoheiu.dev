@@ -1,18 +1,16 @@
-+++
-title = "フィボナッチ数列（Haskellタプリング法）"
-date = 2020-05-03
-[taxonomies]
-categories = ["code"]
-tags = ["Haskell"]
-+++
-
+---
+title: "フィボナッチ数列（Haskellタプリング法）"
+date: 2020-05-03
+categories: ["code"]
+tags: ["Haskell"]
+---
 ## naive fib
 まずnaiveな定義から。
 
 ```
-slowFib 0 = 1
-slowFib 1 = 1
-slowFib n = slowFib (n-1) + slowFib (n-2)
+slowFib 0: 1
+slowFib 1: 1
+slowFib n: slowFib (n-1) + slowFib (n-2)
 ```
 
 ```hs
@@ -39,8 +37,8 @@ slowFib n
 [入門Haskellプログラミング](https://www.amazon.co.jp/dp/B07SFCMP66/)にあったヒントをもとに実装したもの。
 
 ```hs
-fasterFib 1 (a,b) = a
-fasterFib n (a,b) = fasterFib (n-1) (a+b,a)
+fasterFib 1 (a,b): a
+fasterFib n (a,b): fasterFib (n-1) (a+b,a)
 ```
 
 ```hs
@@ -69,12 +67,12 @@ fasterFib 30 (1,1)
 [Haskellによる関数プログラミングの思考法](http://https://www.amazon.co.jp/dp/4048930532/ "Haskellによる関数プログラミングの思考法")は少し違う形で実装していて、
 
 ```hs
---fib2 n = (fib n, fib (n+1))と考えて
-fib2 0 = (0,1)
-fib2 n = (b,a+b)
+--fib2 n: (fib n, fib (n+1))と考えて
+fib2 0: (0,1)
+fib2 n: (b,a+b)
 	where
-		(a,b) = fib 2 (n-1)
+		(a,b): fib 2 (n-1)
 ```
 
 としている。著者によると、「タプリング法では引数を追加して関数を一般化するのではなく、結果を追加して関数を一般化する」(p.161)。  
-`fasterFib`は引数（左辺）のほうに追加しているが、実質的には`fib n = fib (n-1) + fib (n-2)`という計算の結果を引数として追加しているので、変形タプリング法と呼べる、かもしれない。`fib2`のほうは逆に、式の右辺にペアの形で追加している。タプル（ペア）の形で計算の結果をまとめて関数内で用いる、というのがタプリング法の肝であるようだ。
+`fasterFib`は引数（左辺）のほうに追加しているが、実質的には`fib n: fib (n-1) + fib (n-2)`という計算の結果を引数として追加しているので、変形タプリング法と呼べる、かもしれない。`fib2`のほうは逆に、式の右辺にペアの形で追加している。タプル（ペア）の形で計算の結果をまとめて関数内で用いる、というのがタプリング法の肝であるようだ。

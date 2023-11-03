@@ -1,12 +1,10 @@
-+++
-title = "静的サイトジェネレーターZolaへ移行する"
-date = 2021-01-07
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Zola", "Static Site Generator"]
-+++
-### 概要
+---
+title: "静的サイトジェネレーターZolaへ移行する"
+date: 2021-01-07
+math: false
+categories: ["code"]
+tags: ["Zola", "Static Site Generator"]
+---### 概要
 
 以前はGo製のSSG(Static Site Generator)Hugoを使っていたのだけれど、色々考えた結果、Rust製SSGのZolaに乗り換えることに。そしていじっているうちに自分で納得いくまでやりたくなってしまい、テーマも作成してみました、という話です。
 
@@ -85,11 +83,11 @@ templatesに入っているこれらすべてのファイルと、親ディレ�
 - post.html, post-page.html それぞれ、記事一覧と各記事ページのテンプレートになる。
 
 ```
-( base.html > index.html     ) + main.scss = example.com/index.html
-( base.html > post.html      ) + main.scss = example.com/post
-( base.html > post-page.html ) + main.scss + content/post/hoge.md   = example.com/post/hoge
-( base.html > post-page.html ) + main.scss + content/hoge/index.md  = example.com/hoge
-content/post/_index.md = content/post以下の記事群についてのメタデータ
+( base.html > index.html     ) + main.scss: example.com/index.html
+( base.html > post.html      ) + main.scss: example.com/post
+( base.html > post-page.html ) + main.scss + content/post/hoge.md  : example.com/post/hoge
+( base.html > post-page.html ) + main.scss + content/hoge/index.md : example.com/hoge
+content/post/_index.md: content/post以下の記事群についてのメタデータ
 ```
 
 このように、雛形の.htmlをベースにして（記事の場合は.mdファイルの各変数が代入され）そこに.scssから生成されるCSSファイルが適応されて最終的なhtmlが出力される、という流れになっている。この流れを可能にしているのがTera Template流の変数の仕組み。
@@ -104,8 +102,7 @@ content/hoge/index.mdとcontent/hoge/_index.mdの違いは、前者はexample.co
 
 #### Hugo(Academic)からの移行
 
-Academicの.mdテンプレートはフロントマター（タイトルや投稿日などの記事のメタデータ）の区切りが+++でなく---になっているので、逐一変換する必要がある。記事数が多い場合は何らかのスクリプトを組まないと厳しい。
-
+---
 #### シンタックスハイライト
 
 config.tomlに好みのテーマを書き、各.mdのコードブロック先頭に言語を明示することで適用される。対応しているテーマがまだ少ないので、こだわりのある人は先に公式をチェックしておきましょう。
@@ -114,9 +111,7 @@ config.tomlに好みのテーマを書き、各.mdのコードブロック先頭
 
 独特の内部リンク文法を使用しており、たとえば記事内で/post/hoge.mdにリンクを貼りたいときは@/post/hoge.mdとなる。
 
-#### taxonomies
 
-Zolaにおけるタグやカテゴリなどのtaxonomiesは各記事のフロントマターに明示するだけではダメで、templatesにTAXONOMIES/list.html, TAXONOMIES/single.htmlという２種類のテンプレートを作る必要がある。
 
 #### scss
 
@@ -130,7 +125,6 @@ set_section関数を使用してpage.htmlを拾った上で、for構文を用い
 
 #### config.extra.variable
 
-config.tomlの[extra]（自作の設定）でなるべく変数定義することでコードがクリーンになる気がする。ただし、.scss内で自作変数を使うことはできないっぽい。.scssでなく直接.cssを書いて置いておくのであれば使えそう。
 
 #### 数式
 
@@ -139,7 +133,7 @@ config.tomlの[extra]（自作の設定）でなるべく変数定義するこ�
 ```html
   {% if page.extra.math %}
   <script>
-    MathJax = {
+    MathJax: {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']]
       }

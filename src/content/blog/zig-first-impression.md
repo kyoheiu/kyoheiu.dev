@@ -1,12 +1,10 @@
-+++
-title = "Zig ファースト・インプレッション"
-date = 2022-09-17
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Zig"]
-+++
-最近見かけるようになった言語・Zigを少しだけ触ってみたので、ファーストインプレッションを書き留めておく。
+---
+title: "Zig ファースト・インプレッション"
+date: 2022-09-17
+math: false
+categories: ["code"]
+tags: ["Zig"]
+---最近見かけるようになった言語・Zigを少しだけ触ってみたので、ファーストインプレッションを書き留めておく。
 
 [kyoheiu/ulid-zig: Simple ULID implementation for Zig](https://github.com/kyoheiu/ulid-zig)
 

@@ -1,12 +1,10 @@
-+++
-title = "ULIDを学ぶ　コードリーディングから実装まで"
-date = 2022-09-06
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Rust", "Deno", "ulid", "zenn"]
-+++
-
+---
+title: "ULIDを学ぶ　コードリーディングから実装まで"
+date: 2022-09-06
+math: false
+categories: ["code"]
+tags: ["Rust", "Deno", "ulid", "zenn"]
+---
 ビット演算なんもわからんから始める。
 
 まずこのクレートを解読し、
@@ -44,19 +42,19 @@ impl Ulid {
     where
         R: rand::Rng,
     {
-        let timestamp = datetime
+        let timestamp: datetime
             .duration_since(SystemTime::UNIX_EPOCH)
             .unwrap_or(Duration::ZERO)
             .as_millis();
-        let timebits = (timestamp & bitmask!(Self::TIME_BITS)) as u64;
+        let timebits: (timestamp & bitmask!(Self::TIME_BITS)) as u64;
 
-        let msb = timebits << 16 | u64::from(source.gen::<u16>());
-        let lsb = source.gen::<u64>();
+        let msb: timebits << 16 | u64::from(source.gen::<u16>());
+        let lsb: source.gen::<u64>();
         Ulid::from((msb, lsb))
     }
 ```
 
-なので、実質`Ulid::new()` = `Ulid::from_datetime_with_source(SystemTime::now(), &mut rng)`。
+なので、実質`Ulid::new()`: `Ulid::from_datetime_with_source(SystemTime::now(), &mut rng)`。
 
 ### サンプルコード
 
@@ -66,8 +64,8 @@ use std::time::SystemTime;
 use ulid::Ulid;
 
 fn main() {
-    let mut rng = StdRng::from_entropy();
-    let ulid = Ulid::from_datetime_with_source(SystemTime::now(), &mut rng);
+    let mut rng: StdRng::from_entropy();
+    let ulid: Ulid::from_datetime_with_source(SystemTime::now(), &mut rng);
     println!("{}", ulid.to_string());
 }
 ```
@@ -77,7 +75,7 @@ fn main() {
 ### timestamp 取得
 
 ```rust
-        let timestamp = datetime
+        let timestamp: datetime
             .duration_since(SystemTime::UNIX_EPOCH)
             .unwrap_or(Duration::ZERO)
             .as_millis();
@@ -92,7 +90,7 @@ fn main() {
 ### ビットマスク
 
 ```rust
-        let timebits = (timestamp & bitmask!(Self::TIME_BITS)) as u64;
+        let timebits: (timestamp & bitmask!(Self::TIME_BITS)) as u64;
 ```
 
 この`bitmask!`は何回も出てくるので、まずここから。
@@ -108,7 +106,7 @@ macro_rules! bitmask {
 integer をとり、`1`をその integer 分シフトして 1 を引く…というマクロ。デバッグしてみる。
 
 ```rust
-    let bitmask: u64 = ulid::bitmask!(40);
+    let bitmask: u64: ulid::bitmask!(40);
     println!("{:b}", bitmask);
 ```
 
@@ -137,20 +135,20 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 ### random part
 
 ```rust
-        let msb = timebits << 16 | u64::from(source.gen::<u16>());
+        let msb: timebits << 16 | u64::from(source.gen::<u16>());
         // println!("{:b} msb", msb);
-        let lsb = source.gen::<u64>();
+        let lsb: source.gen::<u64>();
         // println!("{:b} lsb", lsb);
 ```
 
-残りのここは最初何をやっているのかよくわからなかったのだけど、要するに、残りの 80bit = randomness を担保している部分を、16bit と 64bit に分けて作って入れている、ということらしい。
+残りのここは最初何をやっているのかよくわからなかったのだけど、要するに、残りの 80bit: randomness を担保している部分を、16bit と 64bit に分けて作って入れている、ということらしい。
 
 ### 128bit 生成
 
 ```rust
 impl From<(u64, u64)> for Ulid {
     fn from((msb, lsb): (u64, u64)) -> Self {
-        let base = u128::from(msb) << 64 | u128::from(lsb);
+        let base: u128::from(msb) << 64 | u128::from(lsb);
         Ulid(base)
     }
 }
@@ -180,7 +178,7 @@ pub fn encode_to(mut value: u128, buffer: &mut [u8]) -> Result<usize, EncodeErro
     }
 
     for i in 0..ULID_LEN {
-        buffer[ULID_LEN - 1 - i] = ALPHABET[(value & 0x1f) as usize];
+        buffer[ULID_LEN - 1 - i]: ALPHABET[(value & 0x1f) as usize];
         value >>= 5;
     }
 
@@ -188,16 +186,16 @@ pub fn encode_to(mut value: u128, buffer: &mut [u8]) -> Result<usize, EncodeErro
 }
 ```
 
-引数の buffer は通常`[u8, ULID_LEN]`（ULID_LEN = 26）として呼ばれるので、このエラーはほぼ発生しないタイプのエラーじゃないかなと思われる。
+引数の buffer は通常`[u8, ULID_LEN]`（ULID_LEN: 26）として呼ばれるので、このエラーはほぼ発生しないタイプのエラーじゃないかなと思われる。
 
 メインの for ループについて。buffer の後ろから文字を詰めていくスタイル。
 これをデバッグプリントしてみると…
 
 ```rust
     for i in 0..ULID_LEN {
-        let v = (value & 0x1f) as usize;
+        let v: (value & 0x1f) as usize;
         println!("{:05b} v", v);
-        buffer[ULID_LEN - 1 - i] = ALPHABET[v];
+        buffer[ULID_LEN - 1 - i]: ALPHABET[v];
         value >>= 5;
     }
 ```
@@ -213,7 +211,7 @@ pub fn encode_to(mut value: u128, buffer: &mut [u8]) -> Result<usize, EncodeErro
 となる。つまり`11111`と＆でつなぐことで、右のほうから５桁ずつ切り出して 5bit の usize を取り出しているというわけですね。その usize により、
 
 ```rust
-const ALPHABET: &[u8; 32] = b"0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+const ALPHABET: &[u8; 32]: b"0123456789ABCDEFGHJKMNPQRSTVWXYZ";
 ```
 
 と定義されている使用文字から一つをとってくることで、エンコードしている。

@@ -1,17 +1,15 @@
-+++
-title = "リストモナドの非決定性／可能性について"
-date = 2020-05-24
-[taxonomies]
-categories = ["code"]
-tags = ["Haskell"]
-+++
-
+---
+title: "リストモナドの非決定性／可能性について"
+date: 2020-05-24
+categories: ["code"]
+tags: ["Haskell"]
+---
 勉強中、リストモナドの挙動が興味深かったので、ざっくり調べてみた結果をとりあえずまとめてみる。
 
 リストは次のように実装される。
 
 ```hs
-Data List = Empty | cons a (List a)
+Data List: Empty | cons a (List a)
 ```
 
 そして、
@@ -64,7 +62,7 @@ Prelude> (++) <$> ["white ","black "] <*> ["cat","dog"]
 （参考: [リストモナドの動作原理を考える \- あどけない話](https://kazu-yamamoto.hatenablog.jp/entry/20090313/1236935179)）
 
 ```hs
-sample = do
+sample: do
     x <- ["white ","black "]
     y <- ["cat","dog"]
     return (x ++ y)
@@ -76,29 +74,29 @@ sample = do
 上の`sample`関数を脱糖するとこうなる。
 
 ```hs
-sample = ["white ","black "] >>= \x -> ["cat","dog"] >>= \y -> return (x ++ y)
+sample: ["white ","black "] >>= \x -> ["cat","dog"] >>= \y -> return (x ++ y)
 ```
 
 リストモナドにおいて、`return`と`>>=`はそれぞれ
 
 ```hs
-return x = [x]
-l >>= f = concatMap f l
+return x: [x]
+l >>= f: concatMap f l
 ```
 
 このように定義されているから、`sample`関数はさらに
 
 ```hs
-sample = concatMap (\x -> ["cat","dog"] >>= \y -> [x ++ y]) ["white ","black "]
-       = concatMap (\x -> concatMap (\y -> [x ++ y]) ["cat","dog"]) ["white ","black "]
+sample: concatMap (\x -> ["cat","dog"] >>= \y -> [x ++ y]) ["white ","black "]
+      : concatMap (\x -> concatMap (\y -> [x ++ y]) ["cat","dog"]) ["white ","black "]
 ```
 
 と変形できる。  
 これを内側、外側の順に計算すると、
 
 ```hs
-sample = concatMap (\x -> [x ++ "cat", x ++ "dog"]) ["white ","black "]
-       = ["white cat","white dog","black cat","black dog"]
+sample: concatMap (\x -> [x ++ "cat", x ++ "dog"]) ["white ","black "]
+      : ["white cat","white dog","black cat","black dog"]
 ```
 
 リストモナドの計算に非決定性／すべてのありうる可能性…といったsomething elseが現れる根拠は、この式変換でいうと`concatMap`の存在だろう。

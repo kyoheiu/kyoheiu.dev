@@ -1,11 +1,9 @@
-+++
-title = "Bret Easton Ellis 'American Psycho'"
-date = 2020-12-29
-[taxonomies]
-categories = ["review"]
-tags = ["novel"]
-+++
-
+---
+title: "Bret Easton Ellis 'American Psycho'"
+date: 2020-12-29
+categories: ["review"]
+tags: ["novel"]
+---
 ### 小説版
 2020年のまだ寒くない時期は朝に読書の時間をある程度とることができ、ちまちま読んでいたがこれは素晴らしい作品だった。  
 舞台はまだドナルド・トランプが「不動産王」として羨望と崇拝の対象だった頃のNY。冒頭から、ファッション、CDプレイヤーやビデオデッキ、美容グッズ、エステ、日焼けサロン、人気で予約のとれないレストラン、会員制ジムなど、身を飾り立てるアイテムや場所、ステータス・シンボルについて、ひたすら主人公Batemanは独りごち続ける。  

@@ -1,11 +1,9 @@
-+++
-title = "purify Amazon URL - an extention for Firefox"
-date = 2021-08-20
-[taxonomies]
-categories = ["code"]
-tags = ["Firefox extention", "Javascript"]
-+++
-[purify Amazon URL – Get this Extension for 🦊 Firefox (en-US)](https://addons.mozilla.org/en-US/firefox/addon/purify-amazon-url/)
+---
+title: "purify Amazon URL - an extention for Firefox"
+date: 2021-08-20
+categories: ["code"]
+tags: ["Firefox extention", "Javascript"]
+---[purify Amazon URL – Get this Extension for 🦊 Firefox (en-US)](https://addons.mozilla.org/en-US/firefox/addon/purify-amazon-url/)
 
 An extention for Firefox that purifies Amazon URL and reloads tab.
 

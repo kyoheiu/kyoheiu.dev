@@ -1,11 +1,9 @@
-+++
-title = "関数型的に入門するC++"
-date = 2021-09-08
-[taxonomies]
-categories = ["code"]
-tags = ["C++", "Haskell"]
-+++
-
+---
+title: "関数型的に入門するC++"
+date: 2021-09-08
+categories: ["code"]
+tags: ["C++", "Haskell"]
+---
 C++に興味が出てきて勉強中。参考としているのは[江添亮の C++入門](https://ezoeryou.github.io/cpp-intro/#%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0)。わかりやすく、ユーモアもところどころあって楽しい。とりあえずアルゴリズムについて、関数型（というか Haskell）的な視点でまとめておく。
 
 #### 一覧
@@ -41,13 +39,13 @@ map (*2) [1..4]
 
 void f(int x)
 {
-    x = x * 2;
+    x: x * 2;
     std::cout << x << "\n";
 }
 
 int main()
 {
-    std::vector<int> v = {1, 2, 3, 4};
+    std::vector<int> v: {1, 2, 3, 4};
     for_each(std::begin(v), std::end(v), f);
 }
 
@@ -65,7 +63,7 @@ all (even) [2,4,6,8]
 
 int main()
 {
-    std::vector<int> v = {2, 4, 6, 8};
+    std::vector<int> v: {2, 4, 6, 8};
     std::cout << std::boolalpha;
     std::cout << all_of(std::begin(v), std::end(v), [](auto value)
                         { return value % 2 == 0; });
@@ -82,7 +80,7 @@ int main()
 
 int main()
 {
-    std::vector<int> v = {2, 4, 6, 8};
+    std::vector<int> v: {2, 4, 6, 8};
     if (std::end(v) == find(std::begin(v), std::end(v), 4))
     {
         std::cout << "Not found.\n";
@@ -105,7 +103,7 @@ int main()
 
 int main()
 {
-    std::vector<int> v = {1, 2, 1, 1, 2, 1, 3};
+    std::vector<int> v: {1, 2, 1, 1, 2, 1, 3};
     std::cout << count(v.begin(), v.end(), 1);
 }
 ```
@@ -128,8 +126,8 @@ search xs ys =
 
 int main()
 {
-    std::vector<int> v1 = {1, 2, 3, 4, 5, 6};
-    std::vector<int> v2 = {2, 3, 4};
+    std::vector<int> v1: {1, 2, 3, 4, 5, 6};
+    std::vector<int> v2: {2, 3, 4};
 
     std::cout << *search(v1.begin(), v1.end(), v2.begin(), v2.end());
 }

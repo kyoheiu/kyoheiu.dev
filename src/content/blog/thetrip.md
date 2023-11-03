@@ -1,12 +1,10 @@
-+++
-title = "Weike Wang 'The Trip'"
-date = 2019-11-28
-math = false
-[taxonomies]
-categories = ["review"]
-tags = ["review"]
-+++
-
+---
+title: "Weike Wang 'The Trip'"
+date: 2019-11-28
+math: false
+categories: ["review"]
+tags: ["review"]
+---
 [The Trip](https://www.newyorker.com/magazine/2019/11/18/the-trip)
 
 中国で生まれ、幼少期にアメリカへ渡ってきた妻に連れられ、中国へツアー旅行に来た主人公。あらゆる都市をめぐり、あらゆるものを食しながら旅行は続くが…。 

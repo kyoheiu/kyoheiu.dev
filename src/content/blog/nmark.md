@@ -1,12 +1,10 @@
-+++
-title = "nmark - a markdown parser written in Nim"
-date = 2021-04-27
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Nim", "markdown", "CommonMark", "parser"]
-+++
-Fast markdown parser, based on CommonMark, written in Nim.
+---
+title: "nmark - a markdown parser written in Nim"
+date: 2021-04-27
+math: false
+categories: ["code"]
+tags: ["Nim", "markdown", "CommonMark", "parser"]
+---Fast markdown parser, based on CommonMark, written in Nim.
 
 [kyoheiu/nmark](https://github.com/kyoheiu/nmark)
 
@@ -16,7 +14,7 @@ Fast markdown parser, based on CommonMark, written in Nim.
 ```nim
 import nmark
 
-let txt = """
+let txt: """
 > Lorem ipsum dolor
 sit amet.
 > - Qui *quodsi iracundia*

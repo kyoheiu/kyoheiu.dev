@@ -1,12 +1,10 @@
-+++
-title = "Parsing CSV file in Nim" 
-date = 2021-01-20
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Nim", "CSV parser"]
-+++
-As an exercise, I wrote a small program in Nim, the programming language that I'm learning these days.
+---
+title: "Parsing CSV file in Nim" 
+date: 2021-01-20
+math: false
+categories: ["code"]
+tags: ["Nim", "CSV parser"]
+---As an exercise, I wrote a small program in Nim, the programming language that I'm learning these days.
 Here, we use `parsecsv` library in standard lib.
 
 ```nim

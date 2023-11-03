@@ -1,12 +1,10 @@
-+++
-title = "[Rust]依存関係にGitHub等のURLを指定している場合はcargo publishに注意しよう"
-date = 2023-01-19
-math = false
-[taxonomies]
-categories = ["code"]
-tags = ["Rust", "cargo", "github"]
-+++
-
+---
+title: "[Rust]依存関係にGitHub等のURLを指定している場合はcargo publishに注意しよう"
+date: 2023-01-19
+math: false
+categories: ["code"]
+tags: ["Rust", "cargo", "github"]
+---
 ## TL;DR
 - Cargo.tomlのdependenciesセクションでは、crates.ioに上がっているパッケージ以外にGitHub等のURLを指定できる
 - 上記のような記述をした場合、手元でビルドする分には何の問題もないが、crates.ioにpublishしたときはそのURLは無視され、自動的にcrates.io内部の同名のクレートを使ってビルドされる（名称がcrates.io内にあるパッケージと一致しない場合はエラー）
@@ -26,7 +24,7 @@ tags = ["Rust", "cargo", "github"]
 ```
 [dependencies]
 ...
-syntect = {version = "5.0.0", git = "https://github.com/kyoheiu/syntect"}
+syntect: {version: "5.0.0", git: "https://github.com/kyoheiu/syntect"}
 ```
 
 手元では当然問題はなかったので安心していたのですが…
