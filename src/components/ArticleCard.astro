@@ -1,5 +1,7 @@
 ---
+import { TaxonomiesKind } from "../types";
 import FormattedDate from "./FormattedDate.svelte";
+import Taxonomies from "./Taxonomies.svelte";
 
 const { post } = Astro.props;
 ---
@@ -9,10 +11,9 @@ const { post } = Astro.props;
   <a href={`/blog/${post.slug}/`}>
     <div class="text-lg text-sky-300 font-semibold">{post.data.title}</div>
   </a>
-  <div class="flex flex-wrap space-x-2">
-    {post.data.categories.map((c) => <span>/{c}</span>)}
-  </div>
-  <div class="flex flex-wrap space-x-2">
-    {post.data.tags.map((t) => <span>#{t}</span>)}
-  </div>
+  <Taxonomies
+    taxonomies={post.data.categories}
+    kind={TaxonomiesKind.Category}
+  />
+  <Taxonomies taxonomies={post.data.tags} kind={TaxonomiesKind.Tag} />
 </div>

@@ -1,10 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import BaseHead from "../components/BaseHead.astro";
+import IndexLayout from "../layouts/IndexLayout.astro";
 import Top from "../components/Top.svelte";
-import Header from "../components/Header.svelte";
+const title = "kyoheiu.dev";
 ---
 
-<BaseLayout>
+<IndexLayout title={title}>
   <Top />
-</BaseLayout>
+</IndexLayout>

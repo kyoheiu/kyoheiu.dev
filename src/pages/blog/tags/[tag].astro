@@ -1,0 +1,33 @@
+---
+import ArticleCard from "../../../components/ArticleCard.astro";
+import NonIndexLayout from "../../../layouts/NonIndexLayout.astro";
+import { getCollection } from "astro:content";
+import BackToIndex from "../../../components/BackToIndex.svelte";
+
+export const getStaticPaths = async () => {
+  const allPosts = await Astro.glob("../../../content/blog/*.md");
+  const tags: string[] = allPosts.map((post) => post.frontmatter.tags).flat();
+  return tags.map((tag) => ({ params: { tag: tag } }));
+};
+
+const { tag } = Astro.params;
+const posts = (await getCollection("blog"))
+  .filter((post) => post.data.tags.includes(tag))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<NonIndexLayout title={`${tag} | kyoheiu.dev`}>
+  <div class="flex flex-col items-center mb-4">
+    <div class="text-xl">[tag: {tag}]</div>
+    <BackToIndex />
+  </div>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <ArticleCard post={post} />
+        </li>
+      ))
+    }
+  </ul>
+</NonIndexLayout>

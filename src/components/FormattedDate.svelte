@@ -6,7 +6,7 @@
   export let date: Date;
 </script>
 
-<time class="text-slate-300" datetime={date.toISOString()}>
+<time class="text-amber-100" datetime={date.toISOString()}>
   {date.toLocaleDateString("en-us", {
     year: "numeric",
     month: "short",

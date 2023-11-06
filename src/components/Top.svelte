@@ -2,7 +2,7 @@
   import Links from "./Link.svelte";
 </script>
 
-<div class="mt-4 flex flex-col items-center">
+<div class="flex flex-col items-center pt-16">
   <div class="w-20 h-20">
     <img src="avatar.png" class="rounded-full" alt="my avatar" />
   </div>

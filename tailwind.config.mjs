@@ -15,6 +15,10 @@ export default {
             code: {
               fontWeight: 400,
             },
+            img: {
+              margin: "0 auto",
+              maxWidth: "90%",
+            }
           },
         },
       },

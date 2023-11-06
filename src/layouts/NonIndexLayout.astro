@@ -1,9 +1,10 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
+import IndexLayout from "./IndexLayout.astro";
+const {title} = Astro.props;
 ---
 
-<BaseLayout>
-  <main class="items-center px-2 w-full sm:w-2/3 sm:max-w-2xl mx-auto">
+<IndexLayout title={title}>
+  <main class="items-center pt-16 px-2 w-full sm:w-2/3 sm:max-w-2xl mx-auto">
     <slot />
   </main>
-</BaseLayout>
+</IndexLayout>
