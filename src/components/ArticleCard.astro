@@ -4,12 +4,10 @@ import FormattedDate from "./FormattedDate.svelte";
 const { post } = Astro.props;
 ---
 
-<div class="mb-4">
+<div class="mb-6">
+  <FormattedDate date={post.data.date} />
   <a href={`/blog/${post.slug}/`}>
     <div class="text-lg text-sky-300 font-semibold">{post.data.title}</div>
-    <p>
-      <FormattedDate date={post.data.date} />
-    </p>
   </a>
   <div class="flex flex-wrap space-x-2">
     {post.data.categories.map((c) => <span>/{c}</span>)}
