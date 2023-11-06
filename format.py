@@ -3,6 +3,8 @@ from os import walk
 i = 0
 for (dirpath, dirnames, filenames) in walk("./src/content/blog"):
     for file in filenames:
+      if ".md" not in file:
+        continue;
       newContent = "---\n"
       with open('./src/content/blog/{}'.format(file), "r") as f:
         _ = f.readline()
