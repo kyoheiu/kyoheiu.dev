@@ -27,11 +27,13 @@ Fast, simple, and easy to configure & use.
 ## v2.10.1 (2023-11-02)
 
 ### Fixed
+
 - Convert tab to 4 spaces when using bat to preview text files.
 
 ## v2.10.0 (2023-11-01)
 
 ### Added
+
 - `bat` integration: If `bat` installed, felix automatically adds syntax highlighting to the text preview.
   - Add `has_bat` field to `State`.
   - Add `FxError::InvalidPath` to handle invalid unicode in file path.
@@ -39,10 +41,12 @@ Fast, simple, and easy to configure & use.
 ## v2.9.0 (2023-10-22)
 
 ### Added
+
 - Change color of untracked/changed files or directories containing such files. Default color is Red(1). You can change it in the config file.
   - Add `git2`.
-  
+
 ### Fixed
+
 - Explicitly ignore the key release events for Windows.
 
 ## v2.8.1 (2023-08-25)
@@ -144,7 +148,7 @@ In addition, you can use felix more conveniently by installing the following app
 - [chafa](https://hpjansson.org/chafa/): Terminal graphics for the 21st century,
   by which you can preview images in felix. **_chafa must be v1.10.0 or
   later._**
-- [bat](https://github.com/sharkdp/bat): A *cat(1)* clone. Add syntax highlighting to the text preview with bat.
+- [bat](https://github.com/sharkdp/bat): A _cat(1)_ clone. Add syntax highlighting to the text preview with bat.
 
 These apps do not need any configuration to use with felix!
 

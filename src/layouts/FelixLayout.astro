@@ -1,21 +1,23 @@
 ---
 import NonIndexLayout from "./NonIndexLayout.astro";
-
 ---
 
 <NonIndexLayout title="felix">
-    <div
-      class="prose
+  <div class="text-right space-x-2">
+    <a class="underline" href="https://crates.io/crates/felix">crates.io</a>
+    <a class="underline" href="https://github.com/kyoheiu/felix">GitHub</a>
+  </div>
+  <div
+    class="prose
 				prose-invert
 				prose-h1:border-b
 				prose-h2:border-b
 				prose-table:table-fixed
 				prose-a:text-sky-300
-	            my-6
-                  break-words
-                  "
-    >
-      <slot />
-    </div>
+	      my-6
+        prose-pre:!whitespace-pre
+        break-words"
+  >
+    <slot />
+  </div>
 </NonIndexLayout>
-

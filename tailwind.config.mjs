@@ -18,7 +18,7 @@ export default {
             img: {
               margin: "0 auto",
               maxWidth: "90%",
-            }
+            },
           },
         },
       },

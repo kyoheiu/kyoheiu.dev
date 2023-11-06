@@ -6,7 +6,7 @@ import NonIndexLayout from "../../layouts/NonIndexLayout.astro";
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
-const title = "posts | kyoheiu.dev"
+const title = "posts | kyoheiu.dev";
 ---
 
 <NonIndexLayout title={title}>
