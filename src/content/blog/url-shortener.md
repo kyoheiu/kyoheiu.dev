@@ -5,6 +5,7 @@ math: false
 categories: ["code"]
 tags: ["Rust", "Backend", "zenn"]
 ---
+
 https://www.shuttle.rs/blog/2022/03/13/url-shortener
 こちらのノリノリの記事にインスパイアされたので、axum を使った URL 短縮サービスを実装してみたいと思います（※バックエンドだけ）。
 

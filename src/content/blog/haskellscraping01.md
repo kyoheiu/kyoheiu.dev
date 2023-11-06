@@ -5,6 +5,7 @@ math: false
 categories: ["code"]
 tags: ["Haskell", "WEBscraping", "scalpel"]
 ---
+
 RSSを吐かず、実際に訪れないと更新されたかどうか確認できないWebサイトの情報を追うために、ささやかだがスクレイピング・プロジェクトを作った。
 流れとしてはこういう感じになる。
 

@@ -5,12 +5,14 @@ draft: true
 categories: ["code"]
 tags: ["Haskell"]
 ---
+
 > Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like. People use them as a speed contest, interview prep, company training, university coursework, practice problems, or to challenge each other.  
-<https://adventofcode.com/2020/about>
+> <https://adventofcode.com/2020/about>
 
 As an exercise in learning Haskell, I'm trying to solve this group of well-made coding problems.
 
 ### Problem
+
 Let's see the first problem, which is about the search in a sequence.  
 For example, we have this list:
 
@@ -26,6 +28,7 @@ For example, we have this list:
 We must find two numbers that sum to 2020 (of course). After that we need to multiply the pair, but this part isn't difficult any way.
 
 ### Answer
+
 ```hs
 import Data.List as L
 
@@ -44,6 +47,7 @@ Using singly-linked list as iterator(basic in Haskell), `L.find` looks up `Maybe
 `print` shows `Just (some number)`, not `some number`, but this is enough for answer.
 
 ### Part Two
+
 This problem is followed by a little bit harder one: Search the three numbers that sum to 2020. So does we have to make subsequences of a sequence?  
 `subsequences` in `Data.List` costs high, and takes long time to finish if the sequence is big. In this case, instead of full-search, we should re-use the first answer code like this:
 
@@ -72,7 +76,9 @@ main: readFile "aoc01.txt" >>= print. threeSum . map readInt . words
 Use `twoSum` in first answer as a helper, and finding three numbers becomes quite an easy task. Here, full-search is separated into two simple searchs.
 
 ### Conclusion
+
 With this problem, we can learn:
+
 - list as iterator
 - avoid full-search when you can
 

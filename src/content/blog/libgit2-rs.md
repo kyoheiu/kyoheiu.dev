@@ -4,6 +4,7 @@ date: 2023-09-04
 categories: ["code"]
 tags: ["rust", "git", "libgit2", "nodejs", "nodegit", "svelte", "docker"]
 ---
+
 ## 文脈
 
 ここのところ、セルフホストするオンラインテキストエディタを自作していたのですが、作っているうちに「テキストファイルに変更を加えたときに自動で`git add {filename}` `git commit -m {message}`できると便利？」と思いつき、色々試していました。その結果得られた知見の共有です。
@@ -15,6 +16,7 @@ Rustaceanに大人気[要出典]のSvelteKit + axumで作っています。
 ちなみにこのテキストも上記のテキストエディタでドッグフード的に書いています。
 
 ## TL;DR
+
 - 特定の処理だけRustに切り出してミニミニサーバーを作るのは思った以上に体験がよい
   - Rustのエラーハンドリングの恩恵を受けられ、またfeature-gateにより依存パッケージも極力減らすことができる　→　コンテナサイズも最小化できる
 - 例としてlibgit2の処理を紹介
@@ -24,6 +26,7 @@ Rustaceanに大人気[要出典]のSvelteKit + axumで作っています。
 もちろんFFIも選択肢としてありますが、型のことを考えたり、FFI自体、いくつかのライブラリの中から選ぶコストがあったりと、単純にFFIでいいじゃんとなる場面ばかりではないと思います。そうした場合、一考の価値があるパターンではないでしょうか。
 
 ## git操作の２つのパターン
+
 今回Rustにアウトソーシングしたのはgit操作です。
 
 バックエンドでgitを動かしてあれこれするのはGit-poweredとも呼ばれ、gollum wikiなども実装している古来よりの知恵ですが、方法としてはざっくり２パターンあり、
@@ -31,7 +34,7 @@ Rustaceanに大人気[要出典]のSvelteKit + axumで作っています。
 1. 素直にchild processをspawnして実行する
 2. libgit2（のバインディング）を呼び出して実行する
 
-このどちらかを選ぶことになると思います。  
+このどちらかを選ぶことになると思います。
 
 ### child processを使う場合
 
@@ -55,12 +58,14 @@ let status: Command::new("git")
 今回はコンテナサイズをなるべく縮めたかったため、以下の方法をとることにしました。
 
 ### libgit2を使う
+
 > libgit2 is a portable, pure C implementation of the Git core methods provided as a re-entrant linkable library with a solid API, allowing you to write native speed custom Git applications in any language that supports C bindings.  
-(https://libgit2.org/)
+> (https://libgit2.org/)
 
 上記引用のとおり、gitのC実装ライブラリがlibgit2です。各言語でバインディングライブラリが提供されており、Rustではrust-langチームによるgit2-rsが、Node.jsではnodegitがそれにあたります。
 
 コードとしてはどの言語でも大体似たような感じになります。たとえばRustだと、
+
 ```rust
 let repo: Repository::open(dir_path)?;
 let mut index: repo.index()?;
@@ -86,9 +91,11 @@ repo.commit(
     &[&parent],
 )?;
 ```
+
 こんな感じです。（一部カスタムエラーを使用していますが、そのへんはよしなに処理してください）
 
 nodegitでも、
+
 ```typescript
 export const addAndCommit: async (file: string, message: string) => {
 	const repo: await git.Repository.open(DATA_PATH);
@@ -105,12 +112,13 @@ export const addAndCommit: async (file: string, message: string) => {
 	await repo.createCommit('HEAD', author, author, message, changes, [parent]);
 };
 ```
+
 てな感じでほぼ一緒なので、どれかひとつの言語で触ってみれば他の言語のバインディングもかんたんに動かせるようになります。
 
 ## nodegitの問題点
 
 フロントエンドはJavaScriptのフレームワークで作るケースが圧倒的多数で、最近はフルスタックで全部JS/TSで書いてしまうことも多いと思います。その場合はlibgit2もJSのバインディングで動かせれば一番話が早いわけです。
-自分のケースでも、最初はSvelteKitで全部書いてしまうつもりだったので、まずnodegitを選択しました。  
+自分のケースでも、最初はSvelteKitで全部書いてしまうつもりだったので、まずnodegitを選択しました。
 
 nodegitは、ふつうの開発環境（≒`ssh`したりいくつかの言語をビルドしたりできる環境）であれば特に追加のパッケージをインストールすることなく動き、またビルドできるはずです。
 自分の手元でも、特に環境をいじることなく上記のコードは動いていたし、ビルドでもエラーは出ませんでした。
@@ -118,7 +126,9 @@ nodegitは、ふつうの開発環境（≒`ssh`したりいくつかの言語�
 ただ、今回のケースでは最終的にDockerイメージを作成する必要があり、そこで詰みました。
 
 ### 依存パッケージの問題
+
 nodegitのリポジトリは最近動きが少なく、インストール方法もかなり簡略化された記述になっているので、まずnodegitをビルドできるステージを用意するのに一苦労です。
+
 ```
 RUN apt-get install -y python3 libkrb5-dev gcc openssl libssh2-1-dev g++ make
 ```
@@ -139,12 +149,15 @@ RUN apt-get install -y python3 libkrb5-dev gcc openssl libssh2-1-dev g++ make
 
 git2-rsの素晴らしいところは、Rustのエラーハンドリングの恩恵を受けられるだけでなく、**feature-gate**で機能を限定してインポートできる点です。  
 デフォルトではopenssl-sysをはじめとしたネットワーク周りのクレートに依存してしまうため、それなりのサイズになってしまうのですが、`git pull`や`git push`相当のリモートリポジトリとのやりとりを行わない（操作範囲をローカルにおさめる）場合は
+
 ```
 git2: { version: "0.17.2", default-features: false }
 ```
+
 このように`default-features`を`false`にしておけば、依存関係を最小限に抑えられます。
 
 さらにベースのイメージにalpineを採用し、
+
 ```
 FROM rust:1-alpine3.18 as builder
 WORKDIR /carbon-builder
@@ -154,14 +167,16 @@ RUN cargo build --release --locked
 
 FROM alpine:3.18
 WORKDIR /carbon-server
-COPY --from=builder /carbon-builder/target/release/carbon-server . 
+COPY --from=builder /carbon-builder/target/release/carbon-server .
 ENV RUST_LOG info
 EXPOSE 8080
 ENTRYPOINT [ "./carbon-server" ]
 ```
+
 このような構成にすると、compressed sizeで5.54MBと、めちゃくちゃ小さいマイクロサービス（？）が完成します。
 
 ## コンテナサイズの比較
+
 トータルでのサイズ感を見てみましょう。
 
 - nodegitを用い、すべてSvelteKit内で書いた場合　…　774.03 MB

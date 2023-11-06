@@ -4,7 +4,9 @@ date: 2020-05-04
 categories: ["code"]
 tags: ["Haskell"]
 ---
+
 ## memoization(?)
+
 次に、memoizationによるフィボナッチ数列関数の作成にトライしてみる。  
 memoizationとは日本語だとメモ化とも呼ばれるプログラミングの手法で、「一度計算したものを記録しておき、必要なときに取り出すようにする」効率化のこと、らしい。
 
@@ -71,12 +73,13 @@ memoFib2 n: let fibList: map fib [0..] in fibList !! n
 しかしこれがよく分からない。`Fib2`でnが２回出てきているあたりが怪しいようにも思うが、そもそも最初の関数定義に`fibList`が登場していないので、いまいち腑に落ちない感じがある。もちろん、ラムダ計算表現に慣れていないから飲み込みづらいということも否定できない。
 
 ## 関数本体とwhere節の関係から考え直す
+
 そこで、最初の`memoFib2`を、次のように`where`節を用いて表現し直してみる。
 
 ```
 memoFib3 n: fibList !! n
     where
-        fibList: map fib [0..] 
+        fibList: map fib [0..]
         fib 0: 1
         fib 1: 1
         fib n: (fibList !! (n-1)) + (fibList !! (n-2))

@@ -1,4 +1,5 @@
 ---
+
 title: "Rust入門ルート"
 date: 2021-02-13
 math: false
@@ -46,9 +47,9 @@ HaskellとRustの比較記事をいくつか読んだが、Haskellの知識が�
 
 #### ざっくりした対応関係
 
-Haskell | Rust
---- | ---
-Maybeモナド | Option型
-Eitherモナド | Result型
-data | struct enum
-case | match
+| Haskell      | Rust        |
+| ------------ | ----------- |
+| Maybeモナド  | Option型    |
+| Eitherモナド | Result型    |
+| data         | struct enum |
+| case         | match       |

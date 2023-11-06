@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "fmt": "npx prettier --write --plugin prettier-plugin-astro . && npx prettier --write --plugin prettier-plugin-svelte .",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
@@ -22,6 +23,10 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "flowbite-svelte-icons": "^0.4.5"
+    "@tailwindcss/typography": "^0.5.10",
+    "flowbite-svelte-icons": "^0.4.5",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.1",
+    "prettier-plugin-svelte": "^3.0.3"
   }
 }

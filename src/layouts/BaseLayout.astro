@@ -1,0 +1,15 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.svelte";
+const { frontmatter } = Astro.props;
+---
+
+<html>
+  <head>
+    <BaseHead title=`${frontmatter.title} | kyoheiu.dev` />
+  </head>
+  <body class="bg-slate-900 text-slate-50">
+    <Header />
+    <slot />
+  </body>
+</html>

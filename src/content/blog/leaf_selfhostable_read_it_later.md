@@ -5,7 +5,9 @@ math: false
 categories: ["code"]
 tags: ["Rust", "Nextjs", "selfhosted"]
 ---
+
 ## はじめに
+
 みなさん、「あとで読む」サービスは何を使ってますか？  
 技術系のブログやZennのような投稿サイト、もちろんそれ以外にも、インターネットには読み応えのある記事がたくさんあるので、「あとで読む」サービスを使っている方は多いと思います。  
 僕がもう何年も使っていたのは[Instapaper](https://www.instapaper.com/)です。WEBでもスマートフォンのアプリでも読める便利さ、ブラウザの拡張機能によりワンクリックでページを保存できる手軽さ、進捗状況を保存してくれるありがたさ、かゆいところに手のとどく素晴らしいサービスだと思います。  
@@ -15,20 +17,22 @@ tags: ["Rust", "Nextjs", "selfhosted"]
 
 [https://github.com/kyoheiu/leaf](https://github.com/kyoheiu/leaf)
 
-
 セルフホストする「あとで読む」WEBアプリです。  
 今回はこちらの開発について、記録がてら書いていきます。
 
 くわしく書くこと：
+
 - セルフホストアプリとは
 - 技術選定プロセス
 - puppeteerとrust_headless_chromeの比較
 
 書かないこと：
+
 - フロントエンドの細かい実装
 - RustでのWEBサーバーの作り方
 
 ## セルフホストアプリとは
+
 現在「個人開発」と言うと、スケーラブルでマネタイズも視野に入れた野心的なマネージドWEBサービスか、さもなくば自分で使うユーティリティ的／効率化用途の小さいプログラムを指すことが多いように思いますが、「開発」はもっと多様なはず！
 世界には「セルフホスト」というジャンルがあります。  
 詳しくは[r/selfhosted](https://www.reddit.com/r/selfhosted/)を眺めてもらえばつかめると思いますが、要するに、ポピュラーなサービス（その多くはWEBベースで中央集権的であり、ビッグテックが提供するもの）がどんどん人を集めていく中、それに対するオルタナを個人／小規模チームで作ったり自分で使っていくムーブメント／人々のことです。
@@ -56,6 +60,7 @@ cf:
 [https://github.com/awesome-selfhosted/awesome-selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted)
 
 ## Instapaperのオルタナを作る
+
 このあたりで話を「あとで読むアプリ」に戻します。
 
 今回はInstapaperをもっと自分にとって使いやすいものにしたいという発想からスタートしているので、当初のイメージは以下の通りでした。
@@ -123,6 +128,7 @@ cf:
 このように、現在は基本的にデータの処理はすべてバックエンドで処理する形をとっていますが、この構成に落ち着くまでには色々と試行錯誤がありました（後述）。
 
 ### バックエンド
+
 前述したように当初から全文検索は実装したいと思っていたため、以下の条件でライブラリを探します。
 
 - なるべく高速で処理できる
@@ -138,11 +144,13 @@ cf:
 そうすると当然バックエンド全体もRustで、ということになるので、今まで何度か使ってきて慣れているaxumをサーバーフレームワークとして採用。
 
 ### データベース
+
 上記したとおり可搬性を重視するとなると、選択肢はほぼ１択でsqlite以外はない、という感じになりますが、ここはやや迷いがありました。というのは、セルフホスト勢が使っているアプリケーションはPostgreSQLを採用しているケースがかなり多いので、ユーザーが自前のPostgreSQLのポートを指定してそこにストアするように設計するということも使用感を考えるとアリではあったからです。  
 最終的にsqliteを選んだのはやはり可搬性と導入のしやすさ、そしてそのシンプルさを評価してです。シンプルであるということは、特に開発時のスピード面で大きくプラスであるように今も思います。  
 ちなみにRust実装でsqlite-ishに使用できるデータベース（[BonsaiDB](https://github.com/khonsulabs/bonsaidb)）もあるのですが、挑戦的なチョイスも許される検索ライブラリとは違い、ここは絶対に堅牢でないといけなかったので、その意味でもsqliteは強かったです。
 
 ### フロントエンド
+
 ここが一番迷走した部分で、正直な話ちゃんと動けばどのフレームワークでもいいのですが、その分どれを使うべきか決め手がない、という状況でもありました。特に僕自身フロントエンドには苦手意識があり、なるべく楽をしたいという気持ちがある一方で、どうせオレオレアプリを作るんだから新しめのフレームワーク／概念を試したいという欲もあり、この２つの間で揺れ動いた結果選定に非常に時間がかかってしまいました。  
 試したフレームワークとしては順番に
 
@@ -160,6 +168,7 @@ cf:
 Next.jsは単純に流通している情報量が非常に多く、詰まったときもissueやSOを見ればなんとかなることが多い（なんとかならないこともある）のが魅力です。またエコシステムも整っていて、組み合わせられるライブラリも豊富なのがありがたかったです。特に今回はユーザー認証をクライアントサイドで完結させることにしたので、Next.jsの強さを実感しました。ただ、middlewareなど最近実装された機能は若干バグい印象も。
 
 ### コンテンツ取得にはpuppeteer？
+
 WEBページのコンテンツを取得する…というとき、ふつうにHTTPリクエストでGETできるページとできないページがあります。SPAサイトなどはこれではまったくうまくいきません。ということで、「ブラウザのふりをしてコンテンツを取ってくる」ライブラリが必要になってきますが、どれを使えばいいのでしょうか？  
 第一候補はGoogle製のnode.jsライブラリであるpuppeteerです。ある意味お膝元であるだけに、Chromeへの追従スピードも早いですし、OSSとしての規模が大きいのでトラブルシューティングもしやすい。  
 実際僕も当初はpuppeteerを使って、
@@ -168,7 +177,7 @@ WEBページのコンテンツを取得する…というとき、ふつうにHT
 2. Next.jsのサーバーサイドでpuppeteerを立ち上げ、コンテンツを取得
 3. Next.jsのサーバーサイドでmozilla/readabilityを呼び出し、コンテンツ本文を抽出
 4. コンテンツ本文など一式をaxumに送り、ammoniaでHTMLをサニタイズ
-6. sqliteに記事本文、URL、カバーイメージURLなどを保存
+5. sqliteに記事本文、URL、カバーイメージURLなどを保存
 
 というフローを組んでいましたし、これでなんの問題もありませんでした。もちろんmozilla/readabilityもこなれています。  
 ではなぜ現在のように、コンテンツ取得・抽出もサーバーサイドで行うように切り替えたのかというと、理由は２つあり、
@@ -190,6 +199,7 @@ WEBページのコンテンツを取得する…というとき、ふつうにHT
 ##### ベンチマーク（Node.js / Rust）
 
 ###### Node.js + puppeteer sample
+
 ```js
 #!/usr/bin/env node
 
@@ -228,6 +238,7 @@ Benchmark 1: node index.mjs
 ```
 
 ###### Rust + headless_chrome
+
 ```rust
 use headless_chrome::{Browser, LaunchOptionsBuilder};
 
@@ -274,6 +285,7 @@ Benchmark 1: ./headless_chrome_sample
 ```
 
 ###### Node.js for loop x10
+
 ```js
 ...
 	for (let i: 0; i < 10; i++) {
@@ -294,6 +306,7 @@ Benchmark 1: node index.mjs
 ```
 
 ###### Rust for loop x10
+
 ```rust
 ...
     for _i in 0..10 {
@@ -318,7 +331,7 @@ Benchmark 1: ./headless_chrome_sample
 `/usr/bin/time`によるベンチマーク
 
 | Tested Command               | node index.mjs | ./headless_chrome_sample | node index.mjs | ./headless_chrome_sample |
-|------------------------------|----------------|--------------------------|----------------|--------------------------|
+| ---------------------------- | -------------- | ------------------------ | -------------- | ------------------------ |
 | User time (seconds)          | 0.30           | 0.07                     | 0.43           | 0.19                     |
 | System time (seconds)        | 0.03           | 0.04                     | 0.11           | 0.17                     |
 | Percent of CPU this job got  | 57%            | 4%                       | 62%            | 1%                       |
@@ -329,7 +342,6 @@ Benchmark 1: ./headless_chrome_sample
 | Involuntary context switches | 8              | 9                        | 50             | 22                       |
 | Page size (bytes)            | 4096           | 4096                     | 4096           | 4096                     |
 | Exit status                  | 0              | 0                        | 0              | 0                        |
-
 
 ベンチマークの結果としては、
 
@@ -342,6 +354,7 @@ Benchmark 1: ./headless_chrome_sample
 今回はどちらかというと速度よりもVPSのCPU使用率を省エネしたかったので、やはりRustにしてよかった…のかもしれません。ただ、CLIで動かすのと、Next.jsに組み込まれた形で動かすのでは様々な数値が異なってくるとは思うので、あくまでも参考数字です。
 
 #### コンテンツ抽出について
+
 個人的に一番つらかったのはここで、Node.jsにはmozilla謹製の[readability](https://github.com/mozilla/readability)というライブラリがある一方で、Rustにはそれに完全準拠したライブラリがない…というのが問題でした。
 
 readabilityというのは、ブラウザにおいていわゆるreader viewを提供するライブラリで、歴史をたどると[arc90という企業（？）が作ったもの](https://ejucovy.github.io/readability/)に端を発しているようです。mozillaはこれをフォークしてスタンドアローン版を作り、Firefox内で使っています。
@@ -360,20 +373,20 @@ RustでのNode Tree操作のつらさを隠蔽するためにnipperやkuchikiな
 
 ちなみに、puppeteer + mozilla/readabilityと、headless_chrome + 自作readabilityの比較はこちら。
 
-| Statistic | Node index.mjs | ./headless_chrome_sample |
-| --- | --- | --- |
-| Command being timed | "node index.mjs" | "./headless_chrome_sample" |
-| User time (seconds) | 0.57 | 0.10 |
-| System time (seconds) | 0.08 | 0.01 |
-| Percent of CPU this job got | 85% | 4% |
-| Elapsed (wall clock) time (h:mm:ss or m:ss) | 0:00.76 | 0:02.72 |
-| Maximum resident set size (kbytes) | 197020 | 197220 |
-| Major (requiring I/O) page faults | 5 | 0 |
-| Minor (reclaiming a frame) page faults | 41363 | 11065 |
-| Voluntary context switches | 2501 | 1463 |
-| Involuntary context switches | 25 | 9 |
-| Page size (bytes) | 4096 | 4096 |
-| Exit status | 0 | 0 |
+| Statistic                                   | Node index.mjs   | ./headless_chrome_sample   |
+| ------------------------------------------- | ---------------- | -------------------------- |
+| Command being timed                         | "node index.mjs" | "./headless_chrome_sample" |
+| User time (seconds)                         | 0.57             | 0.10                       |
+| System time (seconds)                       | 0.08             | 0.01                       |
+| Percent of CPU this job got                 | 85%              | 4%                         |
+| Elapsed (wall clock) time (h:mm:ss or m:ss) | 0:00.76          | 0:02.72                    |
+| Maximum resident set size (kbytes)          | 197020           | 197220                     |
+| Major (requiring I/O) page faults           | 5                | 0                          |
+| Minor (reclaiming a frame) page faults      | 41363            | 11065                      |
+| Voluntary context switches                  | 2501             | 1463                       |
+| Involuntary context switches                | 25               | 9                          |
+| Page size (bytes)                           | 4096             | 4096                       |
+| Exit status                                 | 0                | 0                          |
 
 コンテンツ抽出プロセスの分はわずかにRust版のほうが早いかもしれません。Rustのほうは単体／統合それぞれについてまだ最適化の作業をしていないので、フロー全体で見たときもうちょっと巻ける可能性はありそうです。
 

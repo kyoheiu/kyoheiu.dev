@@ -5,10 +5,10 @@ math: false
 categories: ["code"]
 tags: ["Github Actions", "Arch Linux", "docker", "Rust"]
 ---
+
 タイトルの通りなのだが、若干ハマったので記録しておきます。
 
 Rustのプロジェクトにおいて、自分のローカル環境以外でもうまくインストールできるかのテストを行うためにGitHub Actionsを使っている。
-
 
 ```
 # .github/workflows/install_test.yml
@@ -68,7 +68,7 @@ error: linker `cc` not found
  : note: No such file or directory (os error 2)
 ```
 
-とビルドエラーが出てしまう。 
+とビルドエラーが出てしまう。
 
 そもそものarchlinux:latestイメージの中に入ってみると、
 
@@ -85,7 +85,7 @@ error: package 'gcc' was not found
 
 でもやっぱり引っかかる。そこで、よく[公式の説明](https://hub.docker.com/_/archlinux)を読んで見ると…
 
-> Besides `base` we also provide images for the `base-devel` package group. 
+> Besides `base` we also provide images for the `base-devel` package group.
 
 tagにちゃんと`base-devel`がある…！　そして
 

@@ -5,6 +5,7 @@ math: false
 categories: ["blog"]
 tags: ["keyboard"]
 ---
+
 備忘録として。
 
 ２年くらい、[ProgresTouch RETRO TINY](https://archisite.co.jp/products/archiss/progres-touch/retro-tiny-jp/)の静音赤軸＋静音リングというセットアップを使っていてまったくなんの不満もなかったのだが、たまにふと「静電容量を使ってみたらもうちょっと指の疲れが減るのだろうか」と思うこともある。（言うほど疲れているわけでもない）  

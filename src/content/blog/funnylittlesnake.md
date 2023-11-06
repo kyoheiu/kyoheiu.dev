@@ -4,10 +4,11 @@ date: 2019-10-11
 categories: ["review"]
 tags: ["story"]
 ---
+
 [The O. Henry Prize Stories 100th Anniversary Edition (2019) (The O. Henry Prize Collection)](https://www.amazon.co.jp/dp/B07Q188RRQ/)
 
 O.ヘンリー賞は今年で創設100周年だそうです。巻頭には賞のこれまでの歴史が記されていて興味深い。  
-この賞の対象となるのはアメリカ・カナダの定期刊行物に掲載された英語のstories。もともとは読者からなるいくつかの委員会が、対象のstoriesを徐々に絞り込んでいき、17本にまでなった段階で最終審査員が１〜３位を選ぶ、というものだった。今では、series editorが20本をまず決め、３人の（自身も作家である）審査員がそれぞれのfavoriteの１本を選ぶ、ということになっている。  favoriteの選考過程では作者は匿名にされるので、今のプロセスになってから16年間で、審査員によって作者が特定されたのは２本しかない、とのこと。  
+この賞の対象となるのはアメリカ・カナダの定期刊行物に掲載された英語のstories。もともとは読者からなるいくつかの委員会が、対象のstoriesを徐々に絞り込んでいき、17本にまでなった段階で最終審査員が１〜３位を選ぶ、というものだった。今では、series editorが20本をまず決め、３人の（自身も作家である）審査員がそれぞれのfavoriteの１本を選ぶ、ということになっている。 favoriteの選考過程では作者は匿名にされるので、今のプロセスになってから16年間で、審査員によって作者が特定されたのは２本しかない、とのこと。  
 O.ヘンリーの時代から”stories”の形は大きく変わったという。一人称でも二人称でも三人称でもよいし、全編会話でも会話なしでもよいし、１パラグラフで構成されていても、脚本形式でもよい。今やstoriesは開かれた分野となったけれど、いくつかの要素は変わっていない―「物語の中の異なるピースの間に存在する関係性と、始まりと終わりを何がしかの形でつなげようという情熱的な欲求」。
 
 ---
@@ -16,11 +17,11 @@ O.ヘンリーの時代から”stories”の形は大きく変わったとい�
 
 歴史学の教授の新妻である主人公のValerieは、夫と前妻との間にできた娘のRobynを定期的に預かっている。Valerieはちゃんとした待遇を提供しようと気を張るが、Robynとのコミュニケーションはほとんど成立しない。ある日夫が、仕事があるからと、前妻のもとにRobynを送っていく役目をValerieに押しつけてくる。
 
->THE CHILD WAS NINE YEARS OLD and couldn’t fasten her own buttons.
+> THE CHILD WAS NINE YEARS OLD and couldn’t fasten her own buttons.
 
 これがこの短編の最初の１文であり、Robynは「人形のように生気がない」こどもとして描写されていく。
 
->Valerie had encouraged her into a bath foamed up with bubbles, she still smelled of something furtive—musty spice from the back of a cupboard. [...] Robyn was miniature, a doll—with a plain, pale, wide face, her temples blue-naked where her hair was strained back, her wide-open gray eyes affronted and evasive and set too far apart.
+> Valerie had encouraged her into a bath foamed up with bubbles, she still smelled of something furtive—musty spice from the back of a cupboard. [...] Robyn was miniature, a doll—with a plain, pale, wide face, her temples blue-naked where her hair was strained back, her wide-open gray eyes affronted and evasive and set too far apart.
 
 Robynはほぼコミュニケーションのとれない、不気味な存在だけれど―もしくはそういう存在であるが故に―、彼女から何か危機がもたらされるような気配はなく、Valerieにとっては”無害”であることもまた確かなので、「そういうこども」としていつのまにか存在感は後退していき、むしろ僕の意識は、中盤までは夫との緊張感あるコミュニケーションのほうに向けられていた。この夫の描写がまたうまい―上流階級に位置しながら他人を見下しがちで、とりわけ女性差別の気が濃厚。コミュニケーションの不在よりは、何かを強いられるコミュニケーションのほうが有害に感じられやすい。  
 しかし、「そういうこども」でしかなかったRobynは、Valerieが前妻の家に彼女を届けるにいたって、鮮やかにリフレーミングされていく。この印象の変化が、物語の一つの動力であり、Vapnyrは、リフレーミングの過程がある種の罪悪感と責任感を読者にもたらし、その結果、読者は物語そのものに否応なしに巻き込まれていく―と巻末に書いている。なるほど確かに確かに、という感じなのだが、後半〜終盤にかけて、僕としては他の部分がむしろ目についた。  

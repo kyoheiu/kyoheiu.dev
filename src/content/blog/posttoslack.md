@@ -4,6 +4,7 @@ date: 2020-08-24
 categories: ["code"]
 tags: ["Haskell", "Slack"]
 ---
+
 1. [HaskellによるWebスクレイピング](@/post/haskellscraping01.md)
 2. HaskellでSlackに投稿する（この記事）
 3. [systemdを使ってプログラムを定期実行する](@/post/systemd-service.md)

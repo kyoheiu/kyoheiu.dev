@@ -4,6 +4,7 @@ date: 2020-05-02
 categories: ["code"]
 tags: ["Haskell"]
 ---
+
 ```hs
 headPrimeFactor :: Integer -> Integer
 headPrimeFactor n: if fstprime == []
@@ -20,6 +21,7 @@ primeFactorsList n: (headPrimeFactor n) : primeFactorsList (n `div` (headPrimeFa
 ```
 
 ## メモ
+
 たとえば`primeFactorsList 24: [2, 2, 2, 3]`となるような関数`primeFactorsList`を作りたい。  
 このリストがどう定義できるかを考えると、まず先頭の2というのは、24を[2..]で順番に割っていったときの最初の約数とおくことができる。さらにその次の2は、最初の約数である2で24を割った12について、[2..]で順番に割っていったときの最初の約数である。  
 つまり、リストの`head`をとっていき、それを再帰でコンスしていくというのが、Haskellによる素因数分解の素朴な解法となるはずだ。
@@ -34,11 +36,12 @@ primeFactorsList n: (headPrimeFactor n) : primeFactorsList (n `div` (headPrimeFa
 [23,131,677]
 (0.01 secs, 170,624 bytes)
 ```
+
 ```bash
 *Main> primeFactorsList 2380479237540923
 [29,82085490949687]
 (3.48 secs, 2,754,399,560 bytes)
 ```
 
-ひとつの整数の素因数分解として速いか遅いか、まだよくわからないけれど…。 
+ひとつの整数の素因数分解として速いか遅いか、まだよくわからないけれど…。
 もう少し工夫したやり方があるような気もするなぁ。

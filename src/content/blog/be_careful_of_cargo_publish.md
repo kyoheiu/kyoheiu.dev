@@ -5,16 +5,20 @@ math: false
 categories: ["code"]
 tags: ["Rust", "cargo", "github"]
 ---
+
 ## TL;DR
+
 - Cargo.tomlのdependenciesセクションでは、crates.ioに上がっているパッケージ以外にGitHub等のURLを指定できる
 - 上記のような記述をした場合、手元でビルドする分には何の問題もないが、crates.ioにpublishしたときはそのURLは無視され、自動的にcrates.io内部の同名のクレートを使ってビルドされる（名称がcrates.io内にあるパッケージと一致しない場合はエラー）
 - 対処法は限定的なので注意しよう
 
 ## 何の話
+
 上記の通りですが、自分でも気づかないうちにcrates.ioの仕組みにハマっていたので共有しておきます。  
 一昨年の10月ごろから作っている[自作ファイルマネージャ](https://github.com/kyoheiu/felix)をcrates.ioから`cargo install`コマンドでインストールできるように、crates.ioへpublishしているのですが、そのパッケージの依存関係が自分の意図したものとは違う形でpublishされてしまったという話です。
 
 ## 文脈
+
 具体的な実装と依存関係については本題ではないのでさらっと流しておきますが、ざっくり言うと、ファイルマネージャ内で実装しているテキストファイルのプレビューにおいてシンタックスハイライトをapplyする際に使っている`syntect`というクレートがあるのですが、そのクレート内の関数がマルチバイト文字に対応しておらず、場合によってはpanicしてしまうというものでした。
 
 これについては発見時にPRを送っており、現在すでにmergeされていますが、まだリリースはされていないという状態です。いつかリリースされるでしょう…。
@@ -57,16 +61,18 @@ https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html
 このように丁寧にGitHub URLを依存関係として指定する方法を紹介していますし、実際やったことのある方もたくさんいらっしゃると思います。手元でのビルドと、crates.ioへのpublishはまったく別の次元の話である、というのがこの件のキモです。
 
 ## [patch]は？
+
 crates.ioのパッケージを手元でオーバーライドする`[patch]`というオプションは存在しています。
 
 https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html
 
->The desire to override a dependency can arise through a number of scenarios. Most of them, however, boil down to the ability to work with a crate before it's been published to crates.io. For example:
+> The desire to override a dependency can arise through a number of scenarios. Most of them, however, boil down to the ability to work with a crate before it's been published to crates.io. For example:
+>
 > - A crate you're working on is also used in a much larger application you're working on, and you'd like to test a bug fix to the library inside of the larger application.
 > - An upstream crate you don't work on has a new feature or a bug fix on the master branch of its git repository which you'd like to test out.
 > - You're about to publish a new major version of your crate, but you'd like to do integration testing across an entire package to ensure the new major version works.
 > - You've submitted a fix to an upstream crate for a bug you found, but you'd like to immediately have your application start depending on the fixed version of the crate to avoid blocking on the bug fix getting merged.
-> These scenarios can be solved with the [patch] manifest section.
+>   These scenarios can be solved with the [patch] manifest section.
 
 ただしこれは**ローカルでの話**で、やはりcrates.ioにpublishするパッケージには適用されないようです。上記の説明を読むとpublishするパッケージに適用できそうな雰囲気がプンプンしますが。
 
@@ -74,6 +80,7 @@ cf:
 https://users.rust-lang.org/t/how-to-work-with-a-forked-dependency/13338/1
 
 ## どうすればよいか
+
 実質的には２つ、方法があるように見えます。
 
 １つめは、修正を加えたパッケージを、フォーク元とは別のパッケージとしてcrates.ioに登録し、それを依存関係として記述するというもの。  

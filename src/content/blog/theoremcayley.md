@@ -5,11 +5,12 @@ categories: ["math"]
 tags: ["group", "category"]
 math: true
 ---
+
 Steve Awodey, *Category Theory*で圏論を少しずつ学習中。いきなりつまずいた表題の定理の証明についてまとめておく。
 
 > Theorem(Cayley). Every group G is isomorphic to a group of permutations.  
-(p.13)  
-群$G$は置換群の部分群と同型。
+> (p.13)  
+> 群$G$は置換群の部分群と同型。
 
 単語の定義から。  
 $X$を群とするとき、全単射写像$f: X \rightarrow X$を$X$の置換という。$X$の置換全体からなる群を$X$の置換群という。  
@@ -26,14 +27,14 @@ $X$を群とするとき、全単射写像$f: X \rightarrow X$を$X$の置換と
 
 $$\bar{g}(h): g \cdot h$$
 
-となる写像$\bar{g}$があるとする。   
+となる写像$\bar{g}$があるとする。
 
 #### 単射性
 
 $\bar{g}(a): \bar{g}(b)$であれば、
 
 $$g \cdot a: g \cdot b$$  
-$$g^{-1} \cdot g \cdot a: g^{-1} \cdot g \cdot b$$  
+$$g^{-1} \cdot g \cdot a: g^{-1} \cdot g \cdot b$$
 
 したがって$a: b$となる。
 

@@ -1,4 +1,5 @@
 ---
+
 title: "nmark - a markdown parser written in Nim"
 date: 2021-04-27
 math: false
@@ -7,7 +8,6 @@ tags: ["Nim", "markdown", "CommonMark", "parser"]
 ---Fast markdown parser, based on CommonMark, written in Nim.
 
 [kyoheiu/nmark](https://github.com/kyoheiu/nmark)
-
 
 ### Usage
 
@@ -23,6 +23,7 @@ sit amet.
 
 echo txt.markdown
 ```
+
 ...and it's done.
 
 ```
@@ -47,7 +48,6 @@ bar | baz
 
 is converted to:
 
-
 ```
 <table>
 <thead>
@@ -64,25 +64,29 @@ is converted to:
 </tbody>
 </table>
 ```
+
 (Tables need to be separated from other blocks by empty line.)
 
-
 ### Performance comparison
+
 One of the reason I'm working on this parser is that other markdown parser librarys written in Nim seemed relatively slow. Here is a comparison between `nim-markdown`, which I think is the standard Nim markdown parser, and `nmark`, through a static site generator(which, btw, I made) and `hyperfine`.
 
 `./casa build` generates 100 same htmls containing a lot of markdown delimiter. For detail please check my [repo](https://github.com/kyoheiu/Casa).
 
 #### nim-markdown@0.8.5 >>
-| Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
-|:---|---:|---:|---:|---:|
-| `./casa build` | 296.1 ± 12.2 | 287.6 | 322.4 | 1.00 |
+
+| Command        |    Mean [ms] | Min [ms] | Max [ms] | Relative |
+| :------------- | -----------: | -------: | -------: | -------: |
+| `./casa build` | 296.1 ± 12.2 |    287.6 |    322.4 |     1.00 |
 
 #### nmark@0.1.3 >>
-| Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
-|:---|---:|---:|---:|---:|
-| `./casa build` | 53.1 ± 7.0 | 51.2 | 91.7 | 1.00 |
+
+| Command        |  Mean [ms] | Min [ms] | Max [ms] | Relative |
+| :------------- | ---------: | -------: | -------: | -------: |
+| `./casa build` | 53.1 ± 7.0 |     51.2 |     91.7 |     1.00 |
 
 ### Caution
+
 This is still work-in-progess project, and does not FULLY pass the [spec-test of CommonMark](https://spec.commonmark.org/0.29/). For example,
 
 ```

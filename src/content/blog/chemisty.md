@@ -4,6 +4,7 @@ date: 2019-10-10
 categories: ["review"]
 tags: ["novel"]
 ---
+
 [Chemistry: A novel](https://www.amazon.co.jp/dp/B01M0KOP1P/)
 
 主人公は合成化学を研究する大学院生（grad student）の女性で、一緒に住むボーイフレンドが１人、犬が１匹。化学という分野の中で、自分の才能不足を感じる日々。ある日、ラボで作業をしている最中にビーカーを割りまくり、事実上の謹慎処分となる。depression状態の主人公とボーイフレンドの関係が変質していく一方、妊娠・出産した親友は夫との関係をこじらせていく。自分の子供時代や両親から耳にしたエピソードを思い返しながら、彼女は思索をめぐらせる。
@@ -17,9 +18,9 @@ Weike Wangはニューヨーク在住の中国系アメリカ人。Wikipediaに�
 
 主人公の子供時代、中国に住む母方の祖父が亡くなり、その葬儀に出席するため家族は中国へ戻る。もうアメリカへは戻らない、自分の母親と暮らす、と泣く母。父はそれを認めない。帰りの飛行機で、主人公は母親にこう言いそうになる。お母さんが中国に戻っても、私は気にしないよ。この話を聞いた主人公のカウンセラーは納得できない様子を見せる。
 
->Why do you defend her? the shrink asks. She doesn’t deserve this kind of loyalty.  
->Because mothers have parents too? Because they have lives beyond their own hildren?  
->Because I still want her to be happy.
+> Why do you defend her? the shrink asks. She doesn’t deserve this kind of loyalty.  
+> Because mothers have parents too? Because they have lives beyond their own hildren?  
+> Because I still want her to be happy.
 
 最初にこの箇所を読んだときは、主人公の心情をうまく理解できなかったけれど、この小説の主題を正面切って「移民のアイデンティティ」であると認めれば、少しずつその心情が見えてくる気がする。なぜなら、彼女は両親が経験したことを理解できるから。少なくともこの小説の主人公は、移民の両親の疲れた心を―それが彼女自身にハードな子供時代を与えたとしても―なかったことにはできないような２世で、それが彼女の困難そのものであり、また出口にもなる。  
 こうした２世のアンビバレントな立ち位置は、Wangが次に描いた書いた短編 Omakase でも繰り返し描写される。それはoverthinkingなのか、それともnaturalなのか。周囲が受け入れるべきことなのか、それとも考えすぎさと流す権利のあることなのか。誰がそれを決めるのか。曖昧にしか答え切れない主題を、Wangは変わらず平易な文体で描ききっている。
@@ -32,24 +33,24 @@ Weike Wangはニューヨーク在住の中国系アメリカ人。Wikipediaに�
 
 けれど、現在形がまったく別の効果を生む瞬間もある。胸を打たれるのはそういう瞬間だ。たとえば、主人公とボーイフレンドが過去に足を運んだ、ビートルズを流すレーザーライトショウ。彼はビートルズが好きだが、主人公には知識がない。よく分からないながらも付き合い、音楽を聴く主人公。
 
->During the show, I get carried away by the lasers. There are so many of them.  
->A laser is colorful by emission. It is green because it emits green light. It is not like a leaf that is green because it absorbs red light.  
->Some students have trouble with this—whether the color they perceive is through emission or absorption. Then I tell the student, If you can see the color in the dark, it is its own thing, it is emission. In this way, a green laser is a purer form of color than the world’s greenest leaf.
+> During the show, I get carried away by the lasers. There are so many of them.  
+> A laser is colorful by emission. It is green because it emits green light. It is not like a leaf that is green because it absorbs red light.  
+> Some students have trouble with this—whether the color they perceive is through emission or absorption. Then I tell the student, If you can see the color in the dark, it is its own thing, it is emission. In this way, a green laser is a purer form of color than the world’s greenest leaf.
 
 現在形でつづられる科学のテキストとは、世界でもっとも揺るぎない「真実」の一つに他ならないから、この小説の中で科学的なエピソードが紹介されるとき、そこには畏敬と圧倒と悲しみと諦めと、美しさが込められている、と思う。  
 時に真実は美しい。その美しさが、ふたりがかつて見た光の純度と重なり、同時に、真実の輝きの後ろで、ちっぽけなふたりの思い出はそっと遠ざかっていく。
 
 またたとえば、ボーイフレンドがはじめて主人公にプロポーズをしたときのこと。海で打ち上げられる花火を遊歩道から、彼らは見ている。
 
->Not this one.  
->Or this one.  
->Or this one.  
->The largest one is coming at the end.  
->And then the barge from which the fireworks launched catches on fire and the show abruptly stops.  
->This cannot be happening, he says.  
->So we stay another minute while everyone around us scatters. When the barge is fully consumed by flames and other boats are speeding to its rescue, we have to be evacuated in case the barge explodes.  
->I say we’ll come back next year, and he says he can’t wait until then. I say we’ll watch another show on TV, and he says he can’t do that either.  
->I don’t understand until on the train back, in a tunnel, he puts the ring on my knee.
+> Not this one.  
+> Or this one.  
+> Or this one.  
+> The largest one is coming at the end.  
+> And then the barge from which the fireworks launched catches on fire and the show abruptly stops.  
+> This cannot be happening, he says.  
+> So we stay another minute while everyone around us scatters. When the barge is fully consumed by flames and other boats are speeding to its rescue, we have to be evacuated in case the barge explodes.  
+> I say we’ll come back next year, and he says he can’t wait until then. I say we’ll watch another show on TV, and he says he can’t do that either.  
+> I don’t understand until on the train back, in a tunnel, he puts the ring on my knee.
 
 ほんの瞬間だけ現在形で現前するのは、すでに失われたとわかっている光景。
 

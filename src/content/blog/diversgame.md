@@ -4,6 +4,7 @@ date: 2019-12-23
 categories: ["review"]
 tags: ["novel"]
 ---
+
 [The Divers' Game: A Novel](https://www.amazon.co.jp/dp/B07CWT59DC/)
 
 市民であるpatsと、移民およびその子孫であるquadsとに人々が分けられて生きる社会。patsは皆ガスマスクとガス缶を持っていて、いざというときはquadsをガスで殺しても罪に問われない。quadsはpatsと見分けがつくように、全員片方の手の親指を切り取られ、顔に焼印をおされる。
@@ -17,31 +18,31 @@ tags: ["novel"]
 ともかく順番に見ていこう。最初の"Ogias' day"にはこれといった結末はない。それは他の収録作も同じだが、特にこの最初の話に関しては、世界観の導入といった側面が強く、作品全体に対するイントロダクションになっているという見方もできないわけではない。  
 しかしこの"Ogias' day"は、収録作のうちで最も暴力の気配が濃厚な話でもある。登場人物が暴力を直接その身に受けるわけではないけれど、その近くには暴力が常に漂っている。２人の女子学生のうちの１人・Letheの視点から始まるこの話は、まず通学途中の電車で歌われるCreed - 信条で読み手の肝を冷やしてくる。
 
->A citizen  
->For the life of him  
->Or her or he or she  
->That keeps a mask  
->On the belt or arm  
->Need never fear the streets.  
->If trouble comes  
->Like quad scum—  
->Your mask put on!  
->Your mask put on!  
->The gas shall flow  
->A cloud to grow  
->And lay them low  
->The lowest at our feet.
+> A citizen  
+> For the life of him  
+> Or her or he or she  
+> That keeps a mask  
+> On the belt or arm  
+> Need never fear the streets.  
+> If trouble comes  
+> Like quad scum—  
+> Your mask put on!  
+> Your mask put on!  
+> The gas shall flow  
+> A cloud to grow  
+> And lay them low  
+> The lowest at our feet.
 
 これはpatsの市民憲章とも呼べるもので、この世界の基礎部分で、「You」と「They」が区分けされていること、そして暴力が前提とされていることが分かる。暴力によって成立している社会、ディストピアフィクション、予言的な小説。この本は現実の私たちへのある種の警告なのだろうか？  
 衝撃的な歌から始まるこの最初の物語は、続いてpatsの学生たちが学ぶセンターでの講義へと舞台を移す。講師は、なぜこの社会が今のような形をとるようになったのかを、生徒へというよりは読み手へ言い聞かせるように冷静に語っていく。増え続けていった移民。権利の制限の必要性と、何よりも「見分けをつける」必要性が社会によって合意されていく。ここがある意味ではこの小説において最も直接的に暴力を描いている部分となる。生徒たちはスクリーンで、片方の親指を切り取られるquadsの映像を見せられる。制度として執行される暴力を目の当たりにさせられた生徒たちは、けれど疑問に感じるとか、怒りを覚えるとかいった反応を示さない。むしろ、
 
->The lights came on, and suddenly everyone could see one another. They had all seen this grisly sight, all felt separated, alone in the face of it, but then with the lights on, they could see one another, familiarly, happily. Although they were not, it was almost as though they rubbed against one another all at once like cats, a happiness born from sameness, and in that spirit they poured out of the lecture hall.
+> The lights came on, and suddenly everyone could see one another. They had all seen this grisly sight, all felt separated, alone in the face of it, but then with the lights on, they could see one another, familiarly, happily. Although they were not, it was almost as though they rubbed against one another all at once like cats, a happiness born from sameness, and in that spirit they poured out of the lecture hall.
 
 Ballの洞察は鋭い。映画館的な暗闇の中で、個々に分断されてスクリーン上のまぎれもない暴力（しかもそれは「自分たち」による暴力）を見せつけられた生徒たちは、それに反発するどころか一度無力化され、そして暗闇から解放されたことによってむしろ親密に結びついていく。一見やや野暮ったい小説のイントロにしか感じられなかったこの講義のシーンは、ここに至って、暴力を目にすることによって連帯する人間の本能的な特徴をひとつの題材にしているのだとわかる。  
 本能。僕がこの小説を、時代に即した／時代批評的な作品と読むことに違和感を覚えるのは、結局、この中で描かれるひとつひとつの人間の語り、反応、思考がすべて、人間のもともと持っている本能と大きく関わっていると感じるからだ。それは今の時代に特有のものではない。今の世情に（そこに理屈があろうがなかろうが）批判的な心情を抱いている者はこの小説に批評性を感じるかもしれないが、それは歪んだ鏡というものだろう。  
 もっともぞっとさせられるのは、もう１人の女子学生・Loisが講師に投げかける質問の内容だ。彼女は、「なぜいつも右手の親指を切り取るのか？」と尋ねる。利き手を特定し、その親指を切り取るほうが効果的なのではないか、と。クレバーな、同時に非共感的なこの視点に、読み手は慄く。講師はこう答える。―今は皆利き手の親指を切り取られているが、当初は運営の混乱があった。そもそも親指を切り取るのは何のためか？　quadsの活動を抑えるためなのか、それともページの端を折るように見分けをつけるためなのか、古来からの法、盗人の指を落とすというしきたりの名残なのか…考えてみよう、と。また別のところで講師は言う。
 
->As much as we like to think there can be fairness, it is really a foolish idea, one we ought to have done away with long ago. Instead of fairness there is just order and its consequences.
+> As much as we like to think there can be fairness, it is really a foolish idea, one we ought to have done away with long ago. Instead of fairness there is just order and its consequences.
 
 明らかなのは、彼らにとってはこのシステム、この考え方はすでに所与のものであり、疑う余地がない、ということだ。疑う余地がないものは、それが実際にはいかにグロテスクなものであろうとも、私たちは受け入れる（ということを意識しないまま受け入れている）。こういった有様が現代に特有の傾向であるとか、今の私たちに必要な警告をこの小説は発しているのだ、と言うことは、むしろ一種の傲慢のように感じる。これはむしろ人間という生き物が抱える認知の問題、人間が人間であるうちは決して切除できない、抱え続ける問題なのではないか？　アイヒマンが20世紀から21世紀にかけてしか存在しないと考えるのは一種の「昔はよかった」であり、中世も近代も現代も、常に人間の社会というのはある種の人間にとってはまともな社会ではなかったと考えるほうが、間違いは少ないのではないか？　…私たちはそう問われているのだろうか？
 
@@ -49,7 +50,7 @@ Ballの洞察は鋭い。映画館的な暗闇の中で、個々に分断され�
 
 続く"Row House"は、これとはまた異なる暴力の様相を描いている。前半のパートで描かれるThe Day of the Infanta、これはquadsの住むエリアでずっと繰り返されてきた行事のことだが、その実は狂乱と熱狂の果てに犠牲が供される祝祭であり、その犠牲とは幼子であるThe Infantaに他ならないのだから、言ってみれば中世的な祝祭そのものである。
 
->You’d think we were in the Middle Ages. You’d think no one could read and everyone did what the king says, et cetera et cetera.
+> You’d think we were in the Middle Ages. You’d think no one could read and everyone did what the king says, et cetera et cetera.
 
 暴力を受ける側の中に暴力が潜んでいる。しかも、最終的に犠牲にされる幼子は（そのことは本人には決して知らされない）、命を奪われる前に暴力の限りを尽くすことが許されている。ありとあらゆる「判決」を自分のしたいように下すことができるし、誰に対してどんな命令をしてもよい。そうした時間の後に幼子は犠牲となる、これはそういう祝日なのだった。ここに至って暴力とは、単に執行する側とされる側との間でリニアに・不可逆に行われるものではなくなる。むしろそれは、社会というひとつの巨大の生物の内部で循環し続けるコミュニケーションの一種であり、執行する者とされる者はめまぐるしく変わり、一定ではない。さらに言えば、これは中世的なものでもない。私たちは「いじめ」を知っているからだ。  
 そして"Row House"の後半パート、'The Divers' Game'で描かれるのも、端的に言えば「いじめ」の構造に他ならない。失踪した富豪の息子の身に起きたのは、ある種の狂乱と過熱の果ての事故であり、全員が加害者であるような事件だった。少しも時代的ではない、普遍的な暴力がここでは描かれている。言い換えると、暴力は偏在している。

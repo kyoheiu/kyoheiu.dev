@@ -5,6 +5,7 @@ math: false
 categories: ["code"]
 tags: ["Rust", "Deno", "ulid", "zenn"]
 ---
+
 ビット演算なんもわからんから始める。
 
 まずこのクレートを解読し、

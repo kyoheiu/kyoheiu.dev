@@ -103,6 +103,7 @@ content/hoge/index.mdとcontent/hoge/_index.mdの違いは、前者はexample.co
 #### Hugo(Academic)からの移行
 
 ---
+
 #### シンタックスハイライト
 
 config.tomlに好みのテーマを書き、各.mdのコードブロック先頭に言語を明示することで適用される。対応しているテーマがまだ少ないので、こだわりのある人は先に公式をチェックしておきましょう。
@@ -110,8 +111,6 @@ config.tomlに好みのテーマを書き、各.mdのコードブロック先頭
 #### 内部リンク
 
 独特の内部リンク文法を使用しており、たとえば記事内で/post/hoge.mdにリンクを貼りたいときは@/post/hoge.mdとなる。
-
-
 
 #### scss
 
@@ -125,24 +124,29 @@ set_section関数を使用してpage.htmlを拾った上で、for構文を用い
 
 #### config.extra.variable
 
-
 #### 数式
 
 数式の表示はMathJaxを使用した。関連する部分のコードを貼っておくので参考までに。
 
 ```html
-  {% if page.extra.math %}
-  <script>
-    MathJax: {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      }
-    };
-  </script>
-  <script type="text/javascript" id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-  </script>
-  {% endif %}
+{% if page.extra.math %}
+<script>
+  MathJax: {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ];
+    }
+  }
+</script>
+<script
+  type="text/javascript"
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+></script>
+{% endif %}
 ```
 
 ### まとめると

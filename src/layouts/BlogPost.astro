@@ -1,38 +1,39 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.svelte';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "./BaseLayout.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.svelte";
+import FormattedDate from "../components/FormattedDate.svelte";
+import NonIndexLayout from "./NonIndexLayout.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
 const { title, date, categories, tags } = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} />
-	</head>
-
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div>
-					<div>
-						<div>
-							<FormattedDate date={date} />
-						</div>
-						<h1>{title}</h1>
-						{categories.map(c => <span>{c}&nbsp;</span>)}
-						{tags.map(t => <span>{t}&nbsp;</span>)}
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+<NonIndexLayout>
+  <article>
+    <div>
+      <div>
+        <FormattedDate date={date} />
+      </div>
+      <h1>{title}</h1>
+      <div class="space-x-2 break-words">
+        {categories.map((c) => <span>/{c}</span>)}<br />
+        {tags.map((t) => <span>#{t}</span>)}
+      </div>
+      <hr />
+    </div>
+    <div
+      class="prose
+				prose-invert
+				prose-h1:border-b
+				prose-h2:border-b
+				prose-table:table-fixed
+				prose-a:text-sky-300
+	            mb-6"
+    >
+      <slot />
+    </div>
+  </article>
+</NonIndexLayout>

@@ -1,43 +1,21 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.svelte';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import { getCollection } from "astro:content";
+import ArticleCard from "../../components/ArticleCard.astro";
+import NonIndexLayout from "../../layouts/NonIndexLayout.astro";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<h4>{post.data.title}</h4>
-									<p>
-										<FormattedDate date={post.data.date} />
-									</p>
-								</a>
-								{post.data.categories.map(c => (<span>{c}&nbsp;</span>))}
-								{post.data.tags.map(t => (<span>{t}&nbsp;</span>))}
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<NonIndexLayout>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <ArticleCard post={post} />
+        </li>
+      ))
+    }
+  </ul>
+</NonIndexLayout>

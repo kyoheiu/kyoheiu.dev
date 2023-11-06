@@ -4,6 +4,7 @@ date: 2020-01-15
 categories: ["review"]
 tags: ["story"]
 ---
+
 [Playing Metal Gear Solid V: The Phantom Pain](https://www.newyorker.com/magazine/2020/01/06/playing-metal-gear-solid-v-the-phantom-pain)
 
 The New Yorkerの誌面にしてわずか３ページほどの掌編だが、素晴らしく面白かった。タイトルからして最高で、そして期待をさらに上回る読書体験。ゲーマーならずとも必読。

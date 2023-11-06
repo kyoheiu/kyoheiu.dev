@@ -1,17 +1,10 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseHead from "../components/BaseHead.astro";
 import Top from "../components/Top.svelte";
-import Header from "../components/Header.astro";
+import Header from "../components/Header.svelte";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title="kyoheiu.dev" />
-	</head>
-	<Header />
-	<body>
-        <Top />
-    </body>
-</html>
+<BaseLayout>
+  <Top />
+</BaseLayout>

@@ -243,15 +243,16 @@ test: do
 *Main> parseTest test "aaa111"
 "aaa111"
 ---1:7:
-  |
----  |       ^
+|
+--- | ^
 unexpected '+'
 expecting alphanumeric character or end of input
-```
+
+````
 
 ### Attoparsecでの挙動
 
-つまり、`try`でくるんだパーサーにおいて`eof`がちゃんと動いていないのではないか？ということだ。  
+つまり、`try`でくるんだパーサーにおいて`eof`がちゃんと動いていないのではないか？ということだ。
 どこかのコードが間違っている可能性も十分あるし、ソースコードを読んでいないのでMegaparsecの調査としてはここまでなのだが、本来であれば、`try`以降のパーサーの順序は極力考慮せず組み立てられるのが理想…だと思うので、これは困る。ちなみに、後に検証してみたところ、Parsecの`try`/`eof`でも同じ問題が発生する。
 
 そこで、試しにAttoparsecを使ってみるとこちらはうまくいった。
@@ -308,7 +309,7 @@ main: TIO.readFile "day19e.txt" >>= print . rights . map (parseOnly rules) . T.l
 
 *Main> main
 [Zero [4,1,5],Pairs 1 [(2,3),(3,2)],Pairs 2 [(4,4),(5,5)],Pairs 3 [(4,5),(5,4)],Key 4 'a',Key 5 'b']
-```
+````
 
 もちろん、`choice`以降のリスト内の順序をどのパターンにしても、結果は変わらなかった。
 
@@ -323,10 +324,10 @@ main: TIO.readFile "day19e.txt" >>= print . rights . map (parseOnly rules) . T.l
 
 コード自体はほぼ変わらない。主な変更点としては、
 
-Megaparsec | Attoparsec
-:-: | :-:
-`try` | `choice`
-`eof` | `endOfInput`
+| Megaparsec |  Attoparsec  |
+| :--------: | :----------: |
+|   `try`    |   `choice`   |
+|   `eof`    | `endOfInput` |
 
 まず１点め、`try`でなく`choice`を使うというのは、Attoparsecがデフォルトで失敗時backtrackをする仕様のためで、これは素晴らしい（`try`も実装されているが、これはParsecとの互換性のためと[明記されている](https://hackage.haskell.org/package/attoparsec-0.14.1/docs/Data-Attoparsec-ByteString.html#v:try)）。  
 そしてMegaparsecの`eof`とAttoparsecの`endOfInput`は、どうやら局所的に違う挙動をするらしい。（MegaparsecとParsecがこの点で同じ動きをしたのは、MegaparsecがParsecのフォークだからかもしれない）

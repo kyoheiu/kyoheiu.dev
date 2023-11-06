@@ -1,5 +1,6 @@
 ---
-title: "Parsing CSV file in Nim" 
+
+title: "Parsing CSV file in Nim"
 date: 2021-01-20
 math: false
 categories: ["code"]
@@ -14,7 +15,7 @@ var p: CsvParser
 p.open("sample1.csv")
 p.readHeaderRow()
 while p.readRow():
-  echo "The average of ", p.row[0], " in ", 
+  echo "The average of ", p.row[0], " in ",
     p.headers[2], " is ", p.row[1]
 ```
 

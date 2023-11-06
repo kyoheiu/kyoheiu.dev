@@ -36,7 +36,8 @@ const version: "0.1.6"
 const text: """
 # Perfomance comparison detail
 ...
-### nmark@""" 
+
+### nmark@"""
 
 cd "../casa"
 
@@ -44,14 +45,16 @@ exec("nimble install nmark")
 exec("nim c -d:release casa")
 exec("hyperfine './casa build' --export-markdown nmark.md")
 let s: text & version & """
->>
-""" & readFile("nmark.md")
+
+> > """ & readFile("nmark.md")
 
 cd "../nmark"
 
 writeFile("perfcmp.md", s)
 
 echo "Done."
+
 ```
 
 手動でいじるのは定数として入れているバージョン番号のみなのでだいぶ楽にはなった。この番号も、何らかのスクリプトで.nimbleファイルからとってきたいところだが、適当な関数が見つからないためとりあえずここまでにしている。tomlと見なしてパースすればいいような気もする。
+```
