@@ -8,11 +8,10 @@ import BackToIndex from "../components/BackToIndex.svelte";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, date, categories, tags } = Astro.props;
+const { title, date, categories, tags, math } = Astro.props;
 ---
 
 <NonIndexLayout title={`${title} | kyoheiu.dev`}>
-  <BackToIndex />
   <article>
     <div class="mt-4">
       <FormattedDate date={date} />
@@ -38,6 +37,17 @@ const { title, date, categories, tags } = Astro.props;
     </div>
   </article>
   <div class="text-center">
-    <BackToIndex />
   </div>
+  {math && (
+    <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+  )}
 </NonIndexLayout>
