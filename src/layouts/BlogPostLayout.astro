@@ -4,7 +4,6 @@ import FormattedDate from "../components/FormattedDate.svelte";
 import NonIndexLayout from "./NonIndexLayout.astro";
 import Taxonomies from "../components/Taxonomies.svelte";
 import { TaxonomiesKind } from "../types";
-import BackToIndex from "../components/BackToIndex.svelte";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -12,6 +11,18 @@ const { title, date, categories, tags, math } = Astro.props;
 ---
 
 <NonIndexLayout title={`${title} | kyoheiu.dev`}>
+  {
+    math && (
+      <>
+        <script src="/mathjax-config.js" />
+        <script
+          type="text/javascript"
+          async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        ></script>
+      </>
+    )
+  }
   <article>
     <div class="mt-4">
       <FormattedDate date={date} />
@@ -36,18 +47,5 @@ const { title, date, categories, tags, math } = Astro.props;
       <slot />
     </div>
   </article>
-  <div class="text-center">
-  </div>
-  {math && (
-    <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']]
-    }
-  };
-</script>
-<script type="text/javascript" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-</script>
-  )}
+  <div class="text-center"></div>
 </NonIndexLayout>
