@@ -5,7 +5,7 @@
   export let kind: TaxonomiesKind;
 </script>
 
-<div class="flex flex-wrap space-x-2">
+<div class="flex flex-wrap space-x-2 text-slate-400 text-sm">
   {#if kind === TaxonomiesKind.Category}
     {#each taxonomies as t}
       <a href={`/blog/categories/${t}`}>/{t}</a>&ensp;

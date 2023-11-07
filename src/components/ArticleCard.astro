@@ -6,14 +6,16 @@ import Taxonomies from "./Taxonomies.svelte";
 const { post } = Astro.props;
 ---
 
-<div class="mb-6">
+<div class="w-64 sm:w-80 bg-slate-800 p-6 mx-auto mb-6 rounded-lg flex flex-col space-y-4">
   <FormattedDate date={post.data.date} />
   <a href={`/blog/${post.slug}/`}>
     <div class="text-lg text-sky-300 font-semibold">{post.data.title}</div>
   </a>
+  <div>
   <Taxonomies
     taxonomies={post.data.categories}
     kind={TaxonomiesKind.Category}
   />
-  <Taxonomies taxonomies={post.data.tags} kind={TaxonomiesKind.Tag} />
+<Taxonomies taxonomies={post.data.tags} kind={TaxonomiesKind.Tag} />
+</div>
 </div>
