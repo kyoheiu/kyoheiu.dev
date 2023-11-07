@@ -1,8 +1,14 @@
-<div class="fixed t-0 w-full">
+---
+const currentUrl = Astro.url.pathname.split('/')[1];
+---
+
+<div class="fixed t-0 w-full backdrop-blur-md">
   <header
-    class="py-2 px-4 flex justify-between items-center bg-slate-200 text-slate-900"
+    class="py-2 px-4 flex justify-between items-center"
   >
-    <a href="/" class="font-mono w-12">kyoheiu.dev</a>
+  <div class="font-mono w-12">
+    <a href="/">kyoheiu.dev</a>/<a href={`/${currentUrl}`}>{currentUrl}</a>
+</div>
     <a class="ml-auto" href="https://github.com/kyoheiu" target="_blank">
       <svg
         class="w-6 h-6 dark:text-white"
