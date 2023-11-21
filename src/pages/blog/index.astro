@@ -10,13 +10,7 @@ const title = "posts | kyoheiu.dev";
 ---
 
 <NonIndexLayout title={title}>
-  <ul>
-    {
-      posts.map((post) => (
-        <li>
-          <ArticleCard post={post} />
-        </li>
-      ))
-    }
-  </ul>
+  <div class="md:grid md:grid-cols-2 md:gap-4">
+    {posts.map((post) => <ArticleCard post={post} />)}
+  </div>
 </NonIndexLayout>
