@@ -10,9 +10,11 @@ tags: ["GCP", "cloud functions", "cloud scheduler", "Go"]
 ```
 
 ## 概要
+
 RSS Feedを取得して、定数時間内に更新された記事のタイトルとURLをDiscordのプライベートチャンネルに投稿するだけのCloud Functionsをデプロイし、それをCloud Schedulerから定期実行したい。
 
 ## 背景
+
 これまでFreshRSSをセルフホストしていたのですが、豊富な機能をほぼ使っていないことが気になっていました。結局FressRSS上でテキストを読むことはあまりせず、URLをあとで読む用にWebアプリに送るだけだったので、それならとにかく更新された記事のタイトルとURLだけ分かればよさそうです。
 
 プライベートで使っているDiscordサーバーがあり、これまでもちょっとしたものをWebhook経由でそこに送りこんでいたので、今回もこれをフロントエンド代わりに使います。
@@ -22,12 +24,14 @@ RSS Feedを取得して、定数時間内に更新された記事のタイトル
 この規模であればかんたんなサーバーを立ててcronで定期実行する、と考えるのが一番実装時間が短くて済むはずですが、今回は勉強を兼ねて、GoとGCPを触ります。
 
 ## 構成
+
 - Cloud Schedulerが認証付きCloud Functionsを定期実行する。
 - Cloud Functions内のGoのコードでRSS Feedを取得してパースし、適当な期間内にpublishされたもののタイトルとURLをWebhook経由でDiscordのチャンネルに投稿する。
 
 https://github.com/kyoheiu/discorss
 
 ## Cloud Functions
+
 Feedのパースには`gofeed`を使います。
 
 ```go
@@ -84,12 +88,14 @@ func GetFeedConcurrently(feeds []string, ch chan DFeed) {
 ```
 
 ### nil check
+
 パースする中で`*time.Time`型であるPublishedParsedフィールドを取り出すプロセスがあるのですが、ここで当初`SIGSEGV`が出てしまい、詰まっていました。  
 調べてみるとGoのnilは、特に`interface{}`についてのnil checkをする際には気をつけないといけない点があるとのこと。
 
 https://amyangfei.me/2021/02/17/golang-nil-panic/
 
 > Interface in Go contains both type and value, when checking whether nil with an interface, there are two cases
+>
 > 1. Interface has nullable type(like pointer, map, etc) and value is nil
 > 2. Interface itself has a nil type.
 
@@ -159,27 +165,30 @@ func init() {
 ```
 
 ## Cloud Functionsにデプロイする
+
 Cloud Schedulerとの連携が必要なので、サービスアカウントを作っておきます。  
 注意点として、gen2のCloud FunctionsはCloud Runベースなので、`Cloud Run Invoker`ロールを付与しておく必要があります。このへんドキュメンテーションにあったかな…ないような気がするけど気のせいかな…
 
-サービスアカウントを作っておいてから、下記のコマンドでデプロイすします。  
+サービスアカウントを作っておいてから、下記のコマンドでデプロイすします。
 
 ```
-gcloud functions deploy discorss --gen2 --runtime go121 --trigger-http --entry-point SendFeed --region=us-west1 --service-account example@example.com 
+gcloud functions deploy discorss --gen2 --runtime go121 --trigger-http --entry-point SendFeed --region=us-west1 --service-account example@example.com
 ```
 
 デプロイ中に認証されていないアカウントからの起動を許可するかどうか聞かれるので、デフォルトのNoとしておきます。
 
-ちなみに、package名がmainだとデプロイに失敗してしまうので、適当なpackage名にし、main関数も書かずにデプロイしないといけません。  
+ちなみに、package名がmainだとデプロイに失敗してしまうので、適当なpackage名にし、main関数も書かずにデプロイしないといけません。
 
 :::message
 つまり`go run main.go`で愚直に結果を見る、というのをやりづらいので、ちゃんとテストコードを書いたほうがいい。
 :::
 
 ## Cloud Schedulerを設定する
+
 ターゲットはHTTP、メソッドはGET。  
 Auth HeaderにOIDC Token、サービスアカウントにすでに作成済みのアカウントを設定すればOK。
 （とかんたんに書いているが、ここでだいぶ時間を食われました）
 
 ## 感想
+
 Goがだんだんおもしろくなってきました。
