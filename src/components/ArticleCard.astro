@@ -7,7 +7,7 @@ const { post } = Astro.props;
 ---
 
 <div
-  class="w-64 md:w-full bg-slate-800 p-6 mx-auto mb-6 md:mb-2 rounded-lg flex flex-col space-y-4"
+  class="w-64 sm:w-full bg-slate-800 p-6 mx-auto mb-6 sm:mb-2 rounded-lg flex flex-col space-y-4"
 >
   <FormattedDate date={post.data.date} />
   <a href={`/blog/${post.slug}/`}>
