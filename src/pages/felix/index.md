@@ -24,6 +24,17 @@ Fast, simple, and easy to configure & use.
 
 <a id="new-release"></a>
 
+## v2.11.0 (2023-12-09)
+
+### Added
+
+- `<C-h>` for Backspace functionality after `i`, `I`, `c`, `/`, `:` and `z`.
+
+## v2.10.2 (2023-11-26)
+
+### Fixed
+- Added a filter to every user input to reject `Keyup` events. This is required on the windows platform.
+
 ## v2.10.1 (2023-11-02)
 
 ### Fixed
@@ -255,6 +266,7 @@ Both relative and absolute path available.
 | `:empty<CR>`               | Empty the trash directory. **Please think twice before this command.**                                                                                                                                    |
 | `:h<CR>`                   | Show help. (scrolls by `j` / `k` or `<Up>` / `<Down>`)                                                                                                                                                    |
 | `<Esc>`                    | Return to the normal mode.                                                                                                                                                                                |
+| `<C-h>`                    | Works as Backspace key after `i`, `I`, `c`, `/`, `:` and `z`.                                                                                                                                                                                |
 | `:q<CR>`                   | Exit.                                                                                                                                                                                                     |
 | `ZZ`                       | Exit without cd to last working directory (if `match_vim_exit_behavior` is `false`).                                                                                                                      |
 | `ZQ`                       | cd into the last working directory and exit (if shell setting is ready and `match_vim_exit_behavior` is `false`).                                                                                         |
