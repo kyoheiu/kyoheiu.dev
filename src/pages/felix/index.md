@@ -24,6 +24,28 @@ Fast, simple, and easy to configure & use.
 
 <a id="new-release"></a>
 
+## v2.12.1 (2024-02-04)
+
+### Fixed
+
+- Restore the cursor position properly after exit in a tmux (and possibly in other multiplexers) session.
+
+## v2.12.0 (2024-01-28)
+
+### Added
+
+- `:config` to point to the config file if exists.
+- felix listens to the change of the config file, and re-read the config automatically (after some key inputs).
+
+### Changed
+
+- Refactor around `_run` and `State::new()`.
+  - Add `config_path` field to `State`.
+
+### Fixed
+
+- symlink path and operations with it on Windows.
+
 ## v2.11.1 (2023-12-10)
 
 ### Fixed
@@ -54,41 +76,6 @@ Fast, simple, and easy to configure & use.
 - `bat` integration: If `bat` installed, felix automatically adds syntax highlighting to the text preview.
   - Add `has_bat` field to `State`.
   - Add `FxError::InvalidPath` to handle invalid unicode in file path.
-
-## v2.9.0 (2023-10-22)
-
-### Added
-
-- Change color of untracked/changed files or directories containing such files. Default color is Red(1). You can change it in the config file.
-  - Add `git2`.
-
-### Fixed
-
-- Explicitly ignore the key release events for Windows.
-
-## v2.8.1 (2023-08-25)
-
-### Fixed
-
-- Fix help text.
-
-## v2.8.0 (2023-08-25)
-
-### Added
-
-- `i{file name}<CR>` to create new file, and `I{dir name}<CR>` to create new directory.
-- If zoxide is installed, whenever changing directory inside felix, `zoxide add` will be executed to add the directory or increment its rank in the zoxide database.
-  - For this, `State` now has a new field `has_zoxide`, which is checked at startup.
-
-### Changed
-
-- config's `color` is now optional: By this, all config fields are optional.
-  - Remove warning message when you launch felix without the config file.
-- When opening file by default editor is failed, felix displays more accurate warning: `$EDITOR may not be set, or config file may be invalid.`.
-
-### Removed
-
-- Remove `syntect` and syntax highlighting in the preview area. This will improve build and start-up times, and resolve the handling of wide chars such as CJK.
 
 For more details, see `CHANGELOG.md` in the
 [repository](https://github.com/kyoheiu/felix).
@@ -212,6 +199,7 @@ Both relative and absolute path available.
 | `<C-o>`                  | Jump backward across directories.                                                                                                                                                                                                                                              |
 | `<C-i>`                  | Jump forward across directories.                                                                                                                                                                                                                                               |
 | `:trash<CR>`             | Go to the trash directory.                                                                                                                                                                                                                                                     |
+| `:config<CR>`             | Go to the directory that contains the config file if exists.                                                                                                                                                                                                                                                     |
 
 <a id="open"></a>
 
