@@ -12,7 +12,7 @@
 
   <!-- Short Bio -->
   <div class="text-center m-2 mb-6 w-48">
-    Husband, father, working student@UoL, and developer@algo-artis.
+    Husband, father, and developer@algo-artis.
   </div>
 
   <Links />
