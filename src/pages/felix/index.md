@@ -24,58 +24,41 @@ Fast, simple, and easy to configure & use.
 
 <a id="new-release"></a>
 
-## v2.12.1 (2024-02-04)
-
-### Fixed
-
-- Restore the cursor position properly after exit in a tmux (and possibly in other multiplexers) session.
-
-## v2.12.0 (2024-01-28)
+## v2.15.0 (2024-12-30)
 
 ### Added
 
-- `:config` to point to the config file if exists.
-- felix listens to the change of the config file, and re-read the config automatically (after some key inputs).
+- `<C-d>` and `<C-u>` to go up/down 1/2 page in both normal mode and visual mode.
 
 ### Changed
 
-- Refactor around `_run` and `State::new()`.
-  - Add `config_path` field to `State`.
+- Avoid displaying big text in preview area by adding `PreviewType::TooBigText` (over 1MB).
 
 ### Fixed
 
-- symlink path and operations with it on Windows.
+- Rewrite `test_has_write_permission` test by `set_readonly`.
 
-## v2.11.1 (2023-12-10)
+## v2.14.0 (2024-09-29)
 
-### Fixed
+### Changed
 
-- Allow SHIFT key to enter characters after `i`, `I`, `c`, `/`, `:` and `z`.
+- Update dependencies for Rust 1.81.0. MSRV is the same as before (1.74.1).
 
-## v2.11.0 (2023-12-09)
+## v2.13.0 (2024-04-07)
 
 ### Added
 
-- `<C-h>` for Backspace functionality after `i`, `I`, `c`, `/`, `:` and `z`.
+- `ignore_case` option to the do case-insensitie search by `/`.
+- Symbolic link destinations are now displayed when the cursor is hovered over them.
 
-## v2.10.2 (2023-11-26)
+### Changed
 
-### Fixed
-- Added a filter to every user input to reject `Keyup` events. This is required on the windows platform.
+- Symlink items linked to directory now appears in the directory section, not the file section.
+- MSRV is now v1.74.1
 
-## v2.10.1 (2023-11-02)
+### fixed
 
-### Fixed
-
-- Convert tab to 4 spaces when using bat to preview text files.
-
-## v2.10.0 (2023-11-01)
-
-### Added
-
-- `bat` integration: If `bat` installed, felix automatically adds syntax highlighting to the text preview.
-  - Add `has_bat` field to `State`.
-  - Add `FxError::InvalidPath` to handle invalid unicode in file path.
+- `z` command can now receive multiple arguments: `z dot files<CR>` works as in your terminal.
 
 For more details, see `CHANGELOG.md` in the
 [repository](https://github.com/kyoheiu/felix).
@@ -105,16 +88,16 @@ native build and report any problems._
 
 | package    | installation command  | notes                                                                                                                                       |
 | ---------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| crates.io  | `cargo install felix` | Minimal supported rustc version: **1.67.1**                                                                                                 |
+| crates.io  | `cargo install felix` | Minimum Supported rustc Version: **1.74.1**                                                                                                 |
 | Arch Linux | `pacman -S felix-rs`  | The binary name is `felix` if you install via pacman. Alias `fx='felix'` if you want, as this document (and other installations) uses `fx`. |
 | NetBSD     | `pkgin install felix` |                                                                                                                                             |
 
 ### From git repository
 
 - Make sure that `gcc` is installed.
-- MSRV(Minimum Supported rustc Version): **1.67.1**
+- MSRV(Minimum Supported rustc Version): **1.74.1**
 
-Update Rust if rustc < 1.67.1:
+Update Rust if rustc < 1.74.1:
 
 ```
 rustup update
@@ -188,6 +171,8 @@ Both relative and absolute path available.
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `j` / `<Down>`           | Go up. If the list exceeds max-row, it "scrolls" before the top of the list.                                                                                                                                                                                                   |
 | `k` / `<Up>`             | Go down. If the list exceeds max-row, it "scrolls" before the bottom of the list.                                                                                                                                                                                              |
+| `<C-d>`             | Go down 1/2 page. |
+| `<C-u>`             | Go up 1/2 page. |
 | `h` / `<Left>`           | Go to the parent directory if exists.                                                                                                                                                                                                                                          |
 | `l` / `<Right>` / `<CR>` | Open a file or change the directory. Commands for the execution can be managed in the config file.                                                                                                                                                                             |
 | `gg`                     | Go to the top.                                                                                                                                                                                                                                                                 |
