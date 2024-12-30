@@ -4,7 +4,7 @@ const currentUrl = Astro.url.pathname.split("/")[1];
 
 <div class="fixed t-0 w-full backdrop-blur-md">
   <header class="py-2 px-4 flex justify-between items-center">
-    <div class="font-mono w-12">
+    <div class="text-sm font-mono w-12">
       <a href="/">kyoheiu.dev</a>/<a href={`/${currentUrl}`}>{currentUrl}</a>
     </div>
     <a class="ml-auto" href="https://github.com/kyoheiu" target="_blank">

@@ -3,7 +3,6 @@ import {
 	GithubSolid,
 	CodeBranchOutline,
 	PenNibOutline,
-	PenOutline,
 	CaptioningOutline,
 	DiscordSolid,
 	MailBoxOutline,
@@ -43,7 +42,7 @@ const links: Link[] = [
 {#each links as link}
   <a
     href={link.link}
-    class="flex flex-row items-center justify-center text-slate-800 bg-slate-200 rounded-md w-48 h-10 m-1"
+    class="text-sm flex flex-row items-center justify-center text-slate-800 bg-slate-200 rounded-md w-48 h-10 m-1"
   >
     {#if link.name === "GitHub"}
       <GithubSolid class="h-4 w-4" />
@@ -52,7 +51,7 @@ const links: Link[] = [
     {:else if link.name === "blog (ja-JP)"}
       <PenNibOutline class="h-4 w-4" />
     {:else if link.name === "Zenn (ja-JP)"}
-      <PenOutline class="h-4 w-4" />
+      <PenNibOutline class="h-4 w-4" />
     {:else if link.name === "TED Translation"}
       <CaptioningOutline class="h-4 w-4" />
     {:else if link.name === "Discord@kyoheiu"}
