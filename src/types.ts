@@ -1,4 +1,4 @@
 export enum TaxonomiesKind {
-  Category,
-  Tag,
+	Category,
+	Tag,
 }

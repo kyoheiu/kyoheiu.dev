@@ -1,43 +1,43 @@
 <script lang="ts">
-  import {
-    GithubSolid,
-    CodeBranchOutline,
-    PenNibOutline,
-    PenOutline,
-    CaptioningOutline,
-    DiscordSolid,
-    MailBoxOutline,
-  } from "flowbite-svelte-icons";
+import {
+	GithubSolid,
+	CodeBranchOutline,
+	PenNibOutline,
+	PenOutline,
+	CaptioningOutline,
+	DiscordSolid,
+	MailBoxOutline,
+} from "flowbite-svelte-icons";
 
-  type Link = {
-    name: string;
-    link: string;
-  };
+type Link = {
+	name: string;
+	link: string;
+};
 
-  const links: Link[] = [
-    {
-      name: "GitHub",
-      link: "https://github.com/kyoheiu",
-    },
-    {
-      name: "sourcehut",
-      link: "https://git.sr.ht/~kyoheiu/",
-    },
-    {
-      name: "blog (ja-JP)",
-      link: "/blog",
-    },
-    {
-      name: "Zenn (ja-JP)",
-      link: "https://zenn.dev/kyoheiu",
-    },
-    {
-      name: "TED Translation",
-      link: "https://www.ted.com/profiles/14244197/translator",
-    },
-    { name: "Discord@kyoheiu", link: "" },
-    { name: "im@kyoheiu.dev", link: "" },
-  ];
+const links: Link[] = [
+	{
+		name: "GitHub",
+		link: "https://github.com/kyoheiu",
+	},
+	{
+		name: "sourcehut",
+		link: "https://git.sr.ht/~kyoheiu/",
+	},
+	{
+		name: "blog (ja-JP)",
+		link: "/blog",
+	},
+	{
+		name: "Zenn (ja-JP)",
+		link: "https://zenn.dev/kyoheiu",
+	},
+	{
+		name: "TED Translation",
+		link: "https://www.ted.com/profiles/14244197/translator",
+	},
+	{ name: "Discord@kyoheiu", link: "" },
+	{ name: "im@kyoheiu.dev", link: "" },
+];
 </script>
 
 {#each links as link}

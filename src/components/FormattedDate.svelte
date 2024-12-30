@@ -1,9 +1,9 @@
 <script lang="ts">
-  interface Props {
-    date: Date;
-  }
+interface Props {
+	date: Date;
+}
 
-  export let date: Date;
+export let date: Date;
 </script>
 
 <time class="text-amber-100" datetime={date.toISOString()}>
