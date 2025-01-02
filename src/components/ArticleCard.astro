@@ -5,13 +5,30 @@ import Taxonomies from "./Taxonomies/index.svelte";
 
 const { post } = Astro.props;
 ---
+<style>
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 256px;
+    background-color: #1E293B;
+    padding: 24px;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
 
+  .title {
+    font-size: 1.05rem;
+    color: #7DD3FC;
+    font-weight: 600;
+  }
+</style>
 <div
-  class="w-64 sm:w-full bg-slate-800 p-6 mx-auto mb-6 sm:mb-2 rounded-lg flex flex-col space-y-4"
+  class="wrapper"
 >
   <FormattedDate date={post.data.date} />
   <a href={`/blog/${post.slug}/`}>
-    <div class="text-lg text-sky-300 font-semibold">{post.data.title}</div>
+    <div class="title">{post.data.title}</div>
   </a>
   <div>
     <Taxonomies

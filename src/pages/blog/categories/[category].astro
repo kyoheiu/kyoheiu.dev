@@ -2,7 +2,6 @@
 import ArticleCard from "../../../components/ArticleCard.astro";
 import NonIndexLayout from "../../../layouts/NonIndexLayout.astro";
 import { getCollection } from "astro:content";
-import BackToIndex from "../../../components/BackToIndex.svelte";
 
 export const getStaticPaths = async () => {
 	const allPosts = await Astro.glob("../../../content/blog/*.md");
@@ -21,7 +20,6 @@ const posts = (await getCollection("blog"))
 <NonIndexLayout title={`${category} | kyoheiu.dev`}>
   <div class="flex flex-col items-center mb-4">
     <div class="text-xl">[category: {category}]</div>
-    <BackToIndex />
   </div>
   <ul>
     {

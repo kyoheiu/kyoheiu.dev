@@ -61,8 +61,7 @@ const links: Link[] = [
     {:else if link.name === "im@kyoheiu.dev"}
       <MailBoxOutline class={styles.icon} />
     {/if}
-    &nbsp;
-    <span class="mt-1">{link.name}</span>
+    <span class={styles.name}>{link.name}</span>
   </a>
 {/each}
 </div>

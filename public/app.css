@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+  body {
+    color: #eee;
+    font-size: 16px;
+    font-family: "IBM Plex Sans JP", san-serif;
+    background-color: #0F172A;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  code {
+    font-family: "JetBrains Mono", monospace;
+  }

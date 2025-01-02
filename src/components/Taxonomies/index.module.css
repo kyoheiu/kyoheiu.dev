@@ -1,8 +1,5 @@
 .taxonomy {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
 	color: #eee;
-	font-family: monospace;
+	font-family: "Jetbrains Mono";
 	font-size: 0.80rem;
 }

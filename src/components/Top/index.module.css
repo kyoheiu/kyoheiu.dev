@@ -1,6 +1,27 @@
-.avatar {
+.top {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding-top: 64px;
+}
+
+.name {
+  font-size: 1.5rem;
+  margin: 8px 0;
+}
+
+.img {
+  border-radius: 9999px;
+}
+
+.bio {
+  width: 192px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.footer {
+  width: 192px;
+  margin-top: 24px;
+  text-align: center;
 }

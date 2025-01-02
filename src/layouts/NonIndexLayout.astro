@@ -3,8 +3,17 @@ import IndexLayout from "./IndexLayout.astro";
 const { title } = Astro.props;
 ---
 
+<style>
+  .mainWrapper {
+    max-width: 800px;
+    padding: 16px;
+    margin: 0 auto;
+    margin-top: 48px;
+  }
+</style>
+
 <IndexLayout title={title}>
-  <main class="items-center pt-16 px-2 w-full sm:w-3/4 sm:max-w-3xl mx-auto">
+  <main class="mainWrapper">
     <slot />
   </main>
 </IndexLayout>

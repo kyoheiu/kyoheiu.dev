@@ -3,22 +3,20 @@ import Links from "../Links/index.svelte";
 import styles from "./index.module.css";
 </script>
 
-<div class={styles.avatar}>
-  <div class="w-20 h-20">
-    <img src="avatar.png" class="rounded-full" alt="my avatar" />
-  </div>
+<div class={styles.top}>
+    <img src="avatar.png" class={styles.img} alt="my avatar" width=80 height=80 />
 
   <!-- Title -->
-  <h1 class="text-2xl m-2 mt-4">Kyohei Uto</h1>
+  <div class={styles.name}>Kyohei Uto</div>
 
   <!-- Short Bio -->
-  <div class="text-center m-2 mb-6 w-48">
+  <div class={styles.bio}>
     Husband, father, and developer@algo-artis.
   </div>
 
   <Links />
 
-  <div class="text-center mt-6 mb-2 w-48">
+  <div class={styles.footer}>
     Powered by Astro, illustration by my wife.
   </div>
 </div>

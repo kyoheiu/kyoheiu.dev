@@ -6,11 +6,25 @@ import NonIndexLayout from "../../layouts/NonIndexLayout.astro";
 const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
-const title = "posts | kyoheiu.dev";
+const title = "blog | kyoheiu.dev";
 ---
 
+<head>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+
+<style>
+ .wrapper {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 16px;
+   margin-top: 48px;
+ }
+</style>
+
 <NonIndexLayout title={title}>
-  <div class="sm:grid sm:grid-cols-2 sm:gap-4">
+  <div class="wrapper">
     {posts.map((post) => <ArticleCard post={post} />)}
   </div>
 </NonIndexLayout>
