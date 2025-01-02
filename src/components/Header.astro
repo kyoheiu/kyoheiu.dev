@@ -2,14 +2,45 @@
 const currentUrl = Astro.url.pathname.split("/")[1];
 ---
 
-<div class="fixed t-0 w-full backdrop-blur-md">
-  <header class="py-2 px-4 flex justify-between items-center">
-    <div class="text-sm font-mono w-12">
+<style>
+  .wrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(12px);
+  }
+
+  .header {
+    display: flex;
+  align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+  }
+
+  .siteTitle {
+    font-size: 0.90rem;
+    font-family: monospace;
+  }
+
+  .iconWrapper {
+    margin-left: auto;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    color: #fff;
+  }
+  </style>
+
+    <div class="wrapper">
+      <header class="header">
+        <div class="siteTitle">
       <a href="/">kyoheiu.dev</a>/<a href={`/${currentUrl}`}>{currentUrl}</a>
     </div>
-    <a class="ml-auto" href="https://github.com/kyoheiu" target="_blank">
+    <a class="iconWrapper" href="https://github.com/kyoheiu" target="_blank">
       <svg
-        class="w-6 h-6 dark:text-white"
+          class="icon"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"

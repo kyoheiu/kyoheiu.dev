@@ -7,6 +7,7 @@ import {
 	DiscordSolid,
 	MailBoxOutline,
 } from "flowbite-svelte-icons";
+import styles from "./index.module.css";
 
 type Link = {
 	name: string;
@@ -39,27 +40,29 @@ const links: Link[] = [
 ];
 </script>
 
+<div class={styles.wrapper}>
 {#each links as link}
   <a
     href={link.link}
-    class="text-sm flex flex-row items-center justify-center text-slate-800 bg-slate-200 rounded-md w-48 h-10 m-1"
+    class={styles.link}
   >
     {#if link.name === "GitHub"}
-      <GithubSolid class="h-4 w-4" />
+      <GithubSolid class={styles.icon} />
     {:else if link.name === "sourcehut"}
-      <CodeBranchOutline class="h-4 w-4" />
+      <CodeBranchOutline class={styles.icon} />
     {:else if link.name === "blog (ja-JP)"}
-      <PenNibOutline class="h-4 w-4" />
+      <PenNibOutline class={styles.icon} />
     {:else if link.name === "Zenn (ja-JP)"}
-      <PenNibOutline class="h-4 w-4" />
+      <PenNibOutline class={styles.icon} />
     {:else if link.name === "TED Translation"}
-      <CaptioningOutline class="h-4 w-4" />
+      <CaptioningOutline class={styles.icon} />
     {:else if link.name === "Discord@kyoheiu"}
-      <DiscordSolid class="h-4 w-4" />
+      <DiscordSolid class= {styles.icon} />
     {:else if link.name === "im@kyoheiu.dev"}
-      <MailBoxOutline class="h-4 w-4" />
+      <MailBoxOutline class={styles.icon} />
     {/if}
     &nbsp;
     <span class="mt-1">{link.name}</span>
   </a>
 {/each}
+</div>

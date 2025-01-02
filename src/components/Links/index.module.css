@@ -1,0 +1,23 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 200px;
+	height: 40px;
+	gap: 4px;
+	border-radius: 4px;
+	font-size: 0.75rem;
+	color: #000;
+	background-color: #fff;
+}
+
+.icon {
+	width: 16px;
+	height: 16px;
+}

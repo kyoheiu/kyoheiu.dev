@@ -1,8 +1,9 @@
 <script lang="ts">
-import Links from "./Link.svelte";
+import Links from "../Links/index.svelte";
+import styles from "./index.module.css";
 </script>
 
-<div class="flex flex-col items-center pt-16">
+<div class={styles.avatar}>
   <div class="w-20 h-20">
     <img src="avatar.png" class="rounded-full" alt="my avatar" />
   </div>
@@ -21,3 +22,4 @@ import Links from "./Link.svelte";
     Powered by Astro, illustration by my wife.
   </div>
 </div>
+

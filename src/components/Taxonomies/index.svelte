@@ -1,11 +1,12 @@
 <script lang="ts">
-import { TaxonomiesKind } from "../types";
+import { TaxonomiesKind } from "../../types";
+import styles from "./index.module.css";
 
 export let taxonomies: string[];
 export let kind: TaxonomiesKind;
 </script>
 
-<div class="flex flex-wrap space-x-2 text-slate-400 text-sm">
+<div class={styles.taxonomy}>
   {#if kind === TaxonomiesKind.Category}
     {#each taxonomies as t}
       <a href={`/blog/categories/${t}`}>/{t}</a>&ensp;

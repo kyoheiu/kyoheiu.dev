@@ -1,4 +1,6 @@
 <script lang="ts">
+import styles from "./index.module.css";
+
 interface Props {
 	date: Date;
 }
@@ -6,7 +8,7 @@ interface Props {
 export let date: Date;
 </script>
 
-<time class="text-amber-100" datetime={date.toISOString()}>
+<time class={styles.date} datetime={date.toISOString()}>
   {date.toLocaleDateString("en-us", {
     year: "numeric",
     month: "short",

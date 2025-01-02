@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import FormattedDate from "../components/FormattedDate.svelte";
+import FormattedDate from "../components/FormattedDate/index.svelte";
 import NonIndexLayout from "./NonIndexLayout.astro";
-import Taxonomies from "../components/Taxonomies.svelte";
+import Taxonomies from "../components/Taxonomies/index.svelte";
 import { TaxonomiesKind } from "../types";
 
 type Props = CollectionEntry<"blog">["data"];
