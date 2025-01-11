@@ -19,10 +19,28 @@ Fast, simple, and easy to configure & use.
   - [Move cursor / Change directory](#move)
   - [Open a file](#open)
   - [Manage items](#manage)
-  - [Change the view, search and others](#view)
+  - [Switch the view, search and others](#view)
 - [Configuration](#configuration)
 
 <a id="new-release"></a>
+
+## v2.16.0 (2025-01-12)
+
+### Addeddded
+
+- `c` in visual mode to rename selected items by your default editor at once.
+- Add `ImageSignature::Bigtiff` to recognize BigTIFF.
+
+### Changed
+
+- MSRV is now v1.78.0
+
+- `c` in visual mode to rename selected items by your default editor at once.
+- Add `ImageSignature::Bigtiff` to recognize BigTIFF.
+
+### Changed
+
+- MSRV is now v1.78.0
 
 ## v2.15.0 (2024-12-30)
 
@@ -37,28 +55,6 @@ Fast, simple, and easy to configure & use.
 ### Fixed
 
 - Rewrite `test_has_write_permission` test by `set_readonly`.
-
-## v2.14.0 (2024-09-29)
-
-### Changed
-
-- Update dependencies for Rust 1.81.0. MSRV is the same as before (1.74.1).
-
-## v2.13.0 (2024-04-07)
-
-### Added
-
-- `ignore_case` option to the do case-insensitie search by `/`.
-- Symbolic link destinations are now displayed when the cursor is hovered over them.
-
-### Changed
-
-- Symlink items linked to directory now appears in the directory section, not the file section.
-- MSRV is now v1.74.1
-
-### fixed
-
-- `z` command can now receive multiple arguments: `z dot files<CR>` works as in your terminal.
 
 For more details, see `CHANGELOG.md` in the
 [repository](https://github.com/kyoheiu/felix).
@@ -88,16 +84,16 @@ native build and report any problems._
 
 | package    | installation command  | notes                                                                                                                                       |
 | ---------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| crates.io  | `cargo install felix` | Minimum Supported rustc Version: **1.74.1**                                                                                                 |
+| crates.io  | `cargo install felix` | Minimum Supported rustc Version: **1.78.0**                                                                                                 |
 | Arch Linux | `pacman -S felix-rs`  | The binary name is `felix` if you install via pacman. Alias `fx='felix'` if you want, as this document (and other installations) uses `fx`. |
 | NetBSD     | `pkgin install felix` |                                                                                                                                             |
 
 ### From git repository
 
 - Make sure that `gcc` is installed.
-- MSRV(Minimum Supported rustc Version): **1.74.1**
+- MSRV(Minimum Supported rustc Version): **1.78.0**
 
-Update Rust if rustc < 1.74.1:
+Update Rust if rustc < 1.78.0:
 
 ```
 rustup update
@@ -220,12 +216,13 @@ Both relative and absolute path available.
 | `"Ay` (visual mode) | Append items to register `a`.                                                                                                                                                     |
 | `"Ad` (visual mode) | Delete and append items to register `a`.                                                                                                                                          |
 | `c`                 | Switch to the rename mode (enter the new name and press `<CR>` to rename).                                                                                                        |
+| `c` (visual mode)                | Rename selected items in the default editor at once. By this key you open a temp file in your editor, and when the change is saved, items will be renamed.                                                                                                        |
 | `u`                 | Undo put/delete/rename.                                                                                                                                                           |
 | `<C-r>`             | Redo put/delete/rename.                                                                                                                                                           |
 
 <a id="view"></a>
 
-### Change the view, search and others
+### Switch the view, search and others
 
 | Key                        | Explanation                                                                                                                                                                                               |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
