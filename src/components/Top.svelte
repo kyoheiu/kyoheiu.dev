@@ -4,7 +4,7 @@ import Links from "./Link.svelte";
 
 <div class="flex flex-col items-center pt-16">
   <div class="w-20 h-20">
-    <img src="avatar.png" class="rounded-full" alt="my avatar" />
+    <img src="avatar-round.png" alt="my avatar" />
   </div>
 
   <!-- Title -->
