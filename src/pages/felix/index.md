@@ -24,6 +24,12 @@ Fast, simple, and easy to configure & use.
 
 <a id="new-release"></a>
 
+## v2.16.1 (2025-04-13)
+
+### Fixed
+
+- Add type annotation to u16 -> usize conversion to avoid build error.
+
 ## v2.16.0 (2025-01-12)
 
 ### Addeddded
